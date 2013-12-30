@@ -4,7 +4,7 @@
 library(ggplot2)
 library(reshape2)
 #
-d004 <- read.csv(https://raw.github.com/peterjkeegan/MaoriStats01/MSpkReg01.csv", header=T"
+d004 <- read.csv("~/MaoriStats01/MSpkReg01.csv")
 #
 #
 ##
