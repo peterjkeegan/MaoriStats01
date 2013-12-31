@@ -3,10 +3,14 @@
 #
 library(ggplot2)
 library(reshape2)
+library(RCurl)
 #
-d004 <- read.csv("~/MaoriStats01/MSpkReg01.csv")
-#
-#
+# d004 <- read.csv("~/MaoriStats01/MSpkReg01.csv")
+url <- ("https://raw.github.com/pjkeegan/MaoriStats01/MSpkReg01.csv")
+d004 <- getURL(url)
+d005 <- read.table(textConnection(d004), header=TRUE, sep=",", row.names=id, na.strings=" ")
+
+
 ##
 ### end of script ###
 
