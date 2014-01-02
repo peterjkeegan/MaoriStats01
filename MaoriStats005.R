@@ -3,7 +3,7 @@
 #
 library(ggplot2)
 library(reshape2)
-library(RCurl)
+# library(RCurl)  not really needed
 #
 d005 <- read.csv("~/MaoriStats01/MSpkReg01.csv") # get file local directory
 #
