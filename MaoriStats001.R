@@ -1,5 +1,5 @@
 ### start  R script ##
-## - Maori Stats, from New Zealand Censuses,  Peter J Keegan 2 Jan 2014 ####
+## - Maori Stats, from New Zealand Censuses,  Peter J Keegan 3 Jan 2014 ####
 #
 ## Section 1 #
 #
@@ -155,5 +155,5 @@ plot5c <- ggplot(d005, aes(x=PerSpkr13, y=PerPop13, fill=Region)) +geom_point(co
 plot5d <- plot5c + geom_text(aes(label=Region), hjust=1.1, vjust=.5, size=6) + xlim(5,30)+ ylim(7,46)
 plot5d + guides(fill=FALSE)
 #
-#
+# end of section 4
 ### end of script ###
