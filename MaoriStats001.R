@@ -1,7 +1,7 @@
 ### start  R script ##
 ## - Maori Stats, from New Zealand Censuses,  Peter J Keegan 2 Jan 2014 ####
 #
-# Section 1
+## Section 1 #
 #
 library(ggplot2)
 library(reshape2)
@@ -36,7 +36,7 @@ plot01 + geom_line() + geom_point(size=4) + scale_y_continuous(labels = comma) +
 #
 # End of Section 1
 #
-# Section 2
+## Section 2 ##
 #
 # Create vectors of NZ Census Data, Maori speakers by age group by year (2001,2006,2013)
 #
@@ -68,7 +68,7 @@ plot02b + scale_fill_brewer(palette="Set2") + theme_bw(base_size = 16) + ggtitle
 #
 # End of Section 2
 #
-# Section 3
+## Section 3 ##
 # New Zealand Census Data, No. of Maori language speakers by Regions, 2001 to 2013 ##
 #
 d003 <- read.csv("~/MaoriStats01/MSpkReg01.csv") # get file local directory
@@ -96,7 +96,7 @@ plot03c + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury", "West Co
 #
 # End of Section 3
 #
-# Section 4
+## Section 4 ##
 ## New Zealand Census Data, % of Maori language speakers by Regions, 2001 to 2013 ##
 #
 #
@@ -125,7 +125,7 @@ plot4d + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury", "West Coa
 # End of Section 4
 #
 # Section 5
-# New Zealand Census Data, % of Maori language speakers by Regions 2013 only ##
+# New Zealand Census Data, % of Maori language speakers by Regions vs. % of total regional pop. 2013 only ##
 #
 # Create vectors of NZ Census Data for 2013
 #
