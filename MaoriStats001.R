@@ -138,7 +138,7 @@ PerPop13 <- c(29.6,10.1,20.7,25.7,45.1,22.9,16.6,19.6,12.4,7.3,9.0,11.0,9.9,7.8,
 d005 <- data.frame(Region,PerSpkr13,PerPop13)
 #
 rm(Region,PerSpkr13,PerPop13)
-
+#
 #  1st plot basic then improve
 #
 ggplot(d005, aes(x=PerSpkr13, y=PerPop13, fill=Region)) +geom_point() + theme_bw(base_size = 16) + ggtitle("2013 Census: % Speakers by % of Region Pop.") 
