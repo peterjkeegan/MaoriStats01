@@ -38,7 +38,7 @@ plot01 + geom_line() + geom_point(size=4) + scale_y_continuous(labels = comma) +
 #
 # Section 2
 #
-# Create vectors of NZ Census Data, Maori speakers by age group by year
+# Create vectors of NZ Census Data, Maori speakers by age group by year (2001,2006,2013)
 #
 Year <- c(2001,2006,2013)
 LessThan15 <- c(38673,35151,32961)
@@ -63,8 +63,8 @@ ggplot(d002a, aes(x=Year, y=Population, fill=AgeGroup)) +geom_bar(position="dodg
 #
 #  change plot colours
 #
-plot02b <- ggplot(d002a, aes(x=Year, y=Population, fill=AgeGroup)) +geom_bar(position="dodge", stat="identity")
-plot02b + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitle("Census: Māori language speakers by Age Group")
+plot02b <- ggplot(d002a, aes(x=Year, y=Population, fill=AgeGroup)) + geom_bar(position="dodge", stat="identity")
+plot02b + scale_fill_brewer(palette="Set2") + theme_bw(base_size = 16) + ggtitle("Census: Māori language speakers by Age Group")
 #
 # End of Section 2
 #
@@ -94,7 +94,6 @@ plot03c <- plot03b + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 1
 plot03c + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury", "West Coast", "Marlborough", "Nelson", "Tasman", "Wellington", 
                                     "Manawatu-Wanganui", "Taranaki", "Hawke's Bay", "Gisborne", "Bay of Plenty", "Waikato", "Auckland", "Northland")) + theme(axis.title.y = element_blank())
 #
-#
 # End of Section 3
 #
 # Section 4
@@ -108,7 +107,7 @@ names(d004b) <- c("Region", "Year", "Percent")
 #
 #  1st plot basic then improve
 #
-ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity") + theme_bw(base_size = 16) + ggtitle("Census: Māori language speakers by Region") + coord_flip()
+ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity") + theme_bw(base_size = 16) + ggtitle("Census: % of Māori language speakers by Region") + coord_flip()
 #
 #  2nd plot - change plot colours
 #
@@ -118,7 +117,7 @@ plot04b + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitl
 #  3rd plot - final plot
 #
 plot04c <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity") + coord_flip()
-plot4d <- plot04c + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitle("Census: % Māori language speakers by Region") 
+plot4d <- plot04c + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitle("Census: % of Māori language speakers by Region") 
 plot4d + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury", "West Coast", "Marlborough", "Nelson", "Tasman", "Wellington", 
                                     "Manawatu-Wanganui", "Taranaki", "Hawke's Bay", "Gisborne", "Bay of Plenty", "Waikato", "Auckland", "Northland")) + theme(axis.title.y = element_blank())
 #
