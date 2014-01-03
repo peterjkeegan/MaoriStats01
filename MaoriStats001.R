@@ -1,5 +1,5 @@
 ### start  R script ##
-## - Maori Stats, from New Zealand Censuses,  Peter J Keegan 3 Jan 2014 ####
+## - Maori Stats, from New Zealand Censuses,  Peter J Keegan 4 Jan 2014 ####
 #
 ## Section 1 #
 #
@@ -23,15 +23,15 @@ rm(Descent,Ethnicity, Speakers, Year)  # Get rid of redundant vectors
 # Convert data from wide to long format
 #
 d001a <- melt(d001, id.vars="Year")
-names(d001a) <- c("Year", "Māori", "Population")
+names(d001a) <- c("Year", "Maori", "Population")
 #
 #  plot 1 & then improve it
 #
-ggplot(d001a, aes(x=Year, y=Population, colour=Māori, group=Māori))+geom_line()+geom_point(size=4)
+# ggplot(d001a, aes(x=Year, y=Population, colour=Maori, group=Maori))+geom_line()+geom_point(size=4)
 #
 #  Plot 1 Final
 #
-plot01 <- ggplot(d001a, aes(x=Year, y=Population, colour=Māori, group=Māori)) + ggtitle("NZ Census Data")
+plot01 <- ggplot(d001a, aes(x=Year, y=Population, colour=Maori, group=Maori)) + ggtitle("Fig. 1: NZ Census Data")
 plot01 + geom_line() + geom_point(size=4) + scale_y_continuous(labels = comma) + expand_limits(y=0) + theme_bw(base_size = 19)
 #
 # End of Section 1
@@ -57,16 +57,17 @@ rm(Year, LessThan15, Age15to29, Age30to64, Over64)  # Get rid of redundant vecto
 d002a <- melt(d002, id.vars="Year")
 names(d002a) <- c("Year", "AgeGroup", "Population")
 #
-#  plot
+#  Plot 2, 1st attempt
 #
-ggplot(d002a, aes(x=Year, y=Population, fill=AgeGroup)) +geom_bar(position="dodge", stat="identity") + theme_bw(base_size = 16) + ggtitle("Census: Māori language speakers by Age Group")
+# ggplot(d002a, aes(x=Year, y=Population, fill=AgeGroup)) +geom_bar(position="dodge", stat="identity") + theme_bw(base_size = 16) + ggtitle("Census: Maori language speakers by Age Group")
 #
-#  change plot colours
+#  change Plot 2 colours
 #
 plot02b <- ggplot(d002a, aes(x=Year, y=Population, fill=AgeGroup)) + geom_bar(position="dodge", stat="identity")
-plot02b + scale_fill_brewer(palette="Set2") + theme_bw(base_size = 16) + ggtitle("Census: Māori language speakers by Age Group")
+plot02b + scale_fill_brewer(palette="Set2") + theme_bw(base_size = 16) + ggtitle("Fig. 2: Census: Maori speakers by Age Group")
 #
 # End of Section 2
+#
 #
 ## Section 3 ##
 # New Zealand Census Data, No. of Maori language speakers by Regions, 2001 to 2013 ##
@@ -78,25 +79,27 @@ d003a <- d003[c(2,9,6,3)]
 d003b <- melt(d003a, id.vars="Region")
 names(d003b) <- c("Region", "Year", "Population")
 #
-#  1st plot basic then improve
+#  Plot 3, 1st basic,  then improve
 #
-ggplot(d003b, aes(x=Region, y=Population, fill=Year)) +geom_bar(position="dodge", stat="identity") + theme_bw(base_size = 16) + ggtitle("Census: Māori language speakers by Region") + coord_flip()
+# ggplot(d003b, aes(x=Region, y=Population, fill=Year)) +geom_bar(position="dodge", stat="identity") + theme_bw(base_size = 16) + ggtitle("Census: Maori language speakers by Region") + coord_flip()
 #
-#  2nd plot - change plot colours
+#  Plot 3 - change plot colours
 #
-plot03a <- ggplot(d003b, aes(x=Region, y=Population, fill=Year)) +geom_bar(position="dodge", stat="identity") + coord_flip()
-plot03a + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitle("Census: Māori language speakers by Region")
+# plot03a <- ggplot(d003b, aes(x=Region, y=Population, fill=Year)) +geom_bar(position="dodge", stat="identity") + coord_flip()
+# plot03a + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitle("Census: Maori language speakers by Region")
 #
-#  3rd plot - final plot - get order right
+#  Plot 3 - final plot - get order of regions right
 #
 plot03b <- ggplot(d003b, aes(x=Region, y=Population, fill=Year)) +geom_bar(position="dodge", stat="identity") + coord_flip()
-plot03c <- plot03b + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitle("Census: Māori language speakers by Region") 
+plot03c <- plot03b + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitle("Fig. 3: Census: Maori speakers by Region") 
 plot03c + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury", "West Coast", "Marlborough", "Nelson", "Tasman", "Wellington", 
                                     "Manawatu-Wanganui", "Taranaki", "Hawke's Bay", "Gisborne", "Bay of Plenty", "Waikato", "Auckland", "Northland")) + theme(axis.title.y = element_blank())
 #
 # End of Section 3
 #
+#
 ## Section 4 ##
+#
 ## New Zealand Census Data, % of Maori language speakers by Regions, 2001 to 2013 ##
 #
 #
@@ -105,26 +108,28 @@ d004a <- d003[c(2,11,8,5)]
 d004b <- melt(d004a, id.vars="Region")
 names(d004b) <- c("Region", "Year", "Percent")
 #
-#  1st plot basic then improve
+#  Plot 4,  1st basic then improve
 #
-ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity") + theme_bw(base_size = 16) + ggtitle("Census: % of Māori language speakers by Region") + coord_flip()
+# ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity") + theme_bw(base_size = 16) + ggtitle("Census: % of Maori language speakers by Region") + coord_flip()
 #
-#  2nd plot - change plot colours
+#  Plot 4,  - change plot colours
 #
-plot04b <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity") + coord_flip()
-plot04b + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitle("Census: % Māori language speakers by Region")
+# plot04b <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity") + coord_flip()
+# plot04b + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitle("Census: % Maori language speakers by Region")
 #
-#  3rd plot - final plot
+#  Plot 4 - final plot
 #
 plot04c <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity") + coord_flip()
-plot4d <- plot04c + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitle("Census: % of Māori language speakers by Region") 
+plot4d <- plot04c + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitle("Fig. 4: Census: % of Maori speakers by Region") 
 plot4d + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury", "West Coast", "Marlborough", "Nelson", "Tasman", "Wellington", 
                                     "Manawatu-Wanganui", "Taranaki", "Hawke's Bay", "Gisborne", "Bay of Plenty", "Waikato", "Auckland", "Northland")) + theme(axis.title.y = element_blank())
 #
 #
 # End of Section 4
 #
+#
 # Section 5
+#
 # New Zealand Census Data, % of Maori language speakers by Regions vs. % of total regional pop. 2013 only ##
 #
 # Create vectors of NZ Census Data for 2013
@@ -139,21 +144,22 @@ d005 <- data.frame(Region,PerSpkr13,PerPop13)
 #
 rm(Region,PerSpkr13,PerPop13)
 #
-#  1st plot basic then improve
+#  Plot 5, basic then improve
 #
-ggplot(d005, aes(x=PerSpkr13, y=PerPop13, fill=Region)) +geom_point() + theme_bw(base_size = 16) + ggtitle("2013 Census: % Speakers by % of Region Pop.") 
+# ggplot(d005, aes(x=PerSpkr13, y=PerPop13, fill=Region)) +geom_point() + theme_bw(base_size = 16) + ggtitle("2013 Census: % Speakers by % of Region Pop.") 
 #
-#  2nd plot - add labels, hide key
+#  Plot 5 - add labels, hide key
 #
-plot5a <- ggplot(d005, aes(x=PerSpkr13, y=PerPop13, fill=Region)) +geom_point() + theme_bw(base_size = 16) + ggtitle("2013 Census: Māori % Speakers by % of Region Pop.")
-plot5b <- plot5a + geom_text(aes(label=Region), hjust=1.1, vjust=.5, size=6) + xlim(5,40)+ ylim(5,50)
-plot5b + guides(fill=FALSE)
+# plot5a <- ggplot(d005, aes(x=PerSpkr13, y=PerPop13, fill=Region)) +geom_point() + theme_bw(base_size = 16) + ggtitle("2013 Census: Maori % Speakers by % of Region Pop.")
+# plot5b <- plot5a + geom_text(aes(label=Region), hjust=1.1, vjust=.5, size=6) + xlim(5,40)+ ylim(5,50)
+# plot5b + guides(fill=FALSE)
 #
-# 3rd plot final
+#  Plot 5, final
 #
-plot5c <- ggplot(d005, aes(x=PerSpkr13, y=PerPop13, fill=Region)) +geom_point(colour="blue", size=4) + theme_bw(base_size = 18) + ggtitle("2013 Census: % Speakers by % of Region Pop.")
+plot5c <- ggplot(d005, aes(x=PerSpkr13, y=PerPop13, fill=Region)) +geom_point(colour="blue", size=4) + theme_bw(base_size = 16) + ggtitle("Fig. 5: 2013 Census: % Speakers by % Region Pop.")
 plot5d <- plot5c + geom_text(aes(label=Region), hjust=1.1, vjust=.5, size=6) + xlim(5,30)+ ylim(7,46)
 plot5d + guides(fill=FALSE)
 #
 # end of section 4
-### end of script ###
+#
+### end of R script ###
