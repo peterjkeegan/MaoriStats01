@@ -99,7 +99,6 @@ plot03c + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury", "West Co
 #
 #
 ## Section 4 ##
-#
 ## New Zealand Census Data, % of Maori language speakers by Regions, 2001 to 2013 ##
 #
 #
