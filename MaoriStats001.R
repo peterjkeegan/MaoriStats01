@@ -1,5 +1,5 @@
 ### start  R script ##
-## - Maori Stats, from New Zealand Censuses,  Peter J Keegan 4 Jan 2014 ####
+## - Maori Stats, from New Zealand Censuses,  Peter J Keegan 4 Jan 2014 ###
 #
 ## Section 1 ##
 #
