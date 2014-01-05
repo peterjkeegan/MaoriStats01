@@ -127,7 +127,7 @@ plot4d + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury", "West Coa
 # End of Section 4
 #
 #
-# Section 5
+## Section 5 ##
 #
 # New Zealand Census Data, % of Maori language speakers by Regions vs. % of total regional pop. 2013 only ##
 #
