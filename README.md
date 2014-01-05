@@ -17,7 +17,7 @@ Section 4 I plot the percentage of Māori language speakers by region. I.e., wha
 
 Section 5 I plot the percentage of speakers by the percentage of the population for each region as a scatter plot (Plot 5), in some ways this in kind of collapsing or combining plots 4 and 5. There is a positive correlation between these variables.
 
-OK, WARNINGs - In some cases regional analyses can be misleading, as there is a lot of variation in regions such as Auckland and the Bay of Plenty. This needs to be explored by looking at next lower level, i.e., District Councils (yes I am planning to do this).  There are both errors and over reporting of results in these data.
+WARNINGs - In some cases regional analyses can be misleading, as there is a lot of variation in regions such as Auckland and the Bay of Plenty. This needs to be explored by looking at next lower level, i.e., District Councils (yes I am planning to do this).  There are both errors and over reporting of results in these data.
 
 Where to from here ? I'll look at iwi (Māori tribes), and defacto social class measures such as income and education.
 
