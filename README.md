@@ -13,7 +13,7 @@ Section 2 I plot Māori language speakers (only those of Māori ethnicity) by 4 
 
 Section 3 I plot the number of Māori language speakers by Region, from 2001 to 2013. Again (Plot 3) there is a consistent decrease across all regions. The Bay of Plenty, Gisborne, Waikato and Northland have always had large Māori populations. Auckland now has a large number of Māori residents as a result of internal migration (myself included).
 
-Section 4 I plot the percentage of Māori language speakers by region. I.e., what percentage of the Māori population (in that region) claim to be speakers of Māori (plot 4). Obviously, there are larger percentages of Māori speakers where there are higher percentages of Māori, althought the reasons for this are historic and largely reflect delayed language shift in rural areas where Māori communities are still intact.
+Section 4 I plot the percentage of Māori language speakers by region. I.e., what percentage of the Māori population (in that region) claim to be speakers of Māori (Plot 4). Obviously, there are larger percentages of Māori speakers where there are higher percentages of Māori, although the reasons for this are historic and largely reflect delayed language shift in rural areas where Māori communities are still intact.
 
 Section 5 I plot the percentage of speakers by the percentage of the population for each region as a scatter plot (Plot 5), in some ways this in kind of collapsing or combining plots 4 and 5. There is a positive correlation between these variables.
 
