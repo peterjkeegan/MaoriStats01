@@ -31,7 +31,7 @@ names(d001a) <- c("Year", "Maori", "Population")
 #
 #  Plot 1 Final
 #
-plot01 <- ggplot(d001a, aes(x=Year, y=Population, colour=Maori, group=Maori)) + ggtitle("Fig. 1: NZ Census Data")
+plot01 <- ggplot(d001a, aes(x=Year, y=Population, colour=Maori, group=Maori)) + ggtitle("Figure 1: NZ Census Data")
 plot01 + geom_line() + geom_point(size=4) + scale_y_continuous(labels = comma) + expand_limits(y=0) + theme_bw(base_size = 19)
 #
 # End of Section 1
