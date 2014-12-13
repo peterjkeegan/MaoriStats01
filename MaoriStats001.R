@@ -1,5 +1,5 @@
 ### start  R script ###
-## - Maori Stats, from New Zealand Censuses,  Peter J Keegan 5 Jan 2014 ###
+## - Maori Stats, from New Zealand Censuses,  Peter J Keegan 5 Jan 2014, updated 9 Dec 2014  ###
 #
 ## Section 1 ##
 #
@@ -31,7 +31,7 @@ names(d001a) <- c("Year", "Maori", "Population")
 #
 #  Plot 1 Final
 #
-plot01 <- ggplot(d001a, aes(x=Year, y=Population, colour=Maori, group=Maori)) + ggtitle("Figure 1: NZ Census Data")
+plot01 <- ggplot(d001a, aes(x=Year, y=Population, colour=Maori, group=Maori)) + ggtitle("Figure 1: New Zealand Census Data")
 plot01 + geom_line() + geom_point(size=4) + scale_y_continuous(labels = comma) + expand_limits(y=0) + theme_bw(base_size = 19)
 #
 # End of Section 1
@@ -64,7 +64,7 @@ names(d002a) <- c("Year", "AgeGroup", "Population")
 #  change Plot 2 colours
 #
 plot02b <- ggplot(d002a, aes(x=Year, y=Population, fill=AgeGroup)) + geom_bar(position="dodge", stat="identity")
-plot02b + scale_fill_brewer(palette="Set2") + theme_bw(base_size = 16) + ggtitle("Fig. 2: Census: Maori speakers by Age Group")
+plot02b + scale_fill_brewer(palette="Set2") + theme_bw(base_size = 16) + ggtitle("Fig. 2: New Zealand Census: Maori speakers by Age Group")
 #
 # End of Section 2
 #
@@ -91,7 +91,7 @@ names(d003b) <- c("Region", "Year", "Population")
 #  Plot 3 - final plot - get order of regions right
 #
 plot03b <- ggplot(d003b, aes(x=Region, y=Population, fill=Year)) +geom_bar(position="dodge", stat="identity") + coord_flip()
-plot03c <- plot03b + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitle("Fig. 3: Census: Maori speakers by Region") 
+plot03c <- plot03b + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitle("Figure 3: New Zealand Census: Maori speakers by Region") 
 plot03c + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury", "West Coast", "Marlborough", "Nelson", "Tasman", "Wellington", 
                                     "Manawatu-Wanganui", "Taranaki", "Hawke's Bay", "Gisborne", "Bay of Plenty", "Waikato", "Auckland", "Northland")) + theme(axis.title.y = element_blank())
 #
