@@ -1,5 +1,5 @@
 ### start  R script ###
-## - Maori Stats, from New Zealand Censuses,  Peter J Keegan 5 Jan 2014, updated 13 Dec 2014  ###
+## - Maori Stats, from New Zealand Censuses,  Peter J Keegan 5 Jan 2014, updated 16 Dec 2014  ##
 #
 ## Section 1 ##
 #
@@ -64,7 +64,7 @@ names(d002a) <- c("Year", "AgeGroup", "Population")
 #  change Plot 2 colours
 #
 plot02b <- ggplot(d002a, aes(x=Year, y=Population, fill=AgeGroup)) + geom_bar(position="dodge", stat="identity")
-plot02b + scale_fill_brewer(palette="Set2") + theme_bw(base_size = 16) + ggtitle("Fig. 2: New Zealand Census: Maori speakers by Age Group")
+plot02b + scale_fill_brewer(palette="Set2") + theme_bw(base_size = 16) + ggtitle("Figure 2: New Zealand Census: Maori speakers by Age Group")
 #
 # End of Section 2
 #
@@ -153,12 +153,13 @@ rm(Region,PerSpkr13,PerPop13)
 # plot5b <- plot5a + geom_text(aes(label=Region), hjust=1.1, vjust=.5, size=6) + xlim(5,40)+ ylim(5,50)
 # plot5b + guides(fill=FALSE)
 #
-#  Plot 5, final
+#  Plot 5, final R plot
 #
-plot5c <- ggplot(d005, aes(x=PerSpkr13, y=PerPop13, fill=Region)) +geom_point(colour="blue", size=4) + theme_bw(base_size = 16) + ggtitle("Fig. 5: 2013 Census: % Speakers by % Region Pop.")
+plot5c <- ggplot(d005, aes(x=PerSpkr13, y=PerPop13, fill=Region)) +geom_point(colour="blue", size=4) + theme_bw(base_size = 16) + ggtitle("Figure 5: 2013 Census: % Speakers by % Region Pop.")
 plot5d <- plot5c + geom_text(aes(label=Region), hjust=1.1, vjust=.5, size=6) + xlim(5,30)+ ylim(7,46)
 plot5d + guides(fill=FALSE)
 #
-# end of section 4
+# end of section 5, clean up R plot with Pixelmator and then upload
 #
 ### end of R script ###
+
