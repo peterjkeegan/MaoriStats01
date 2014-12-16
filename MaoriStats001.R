@@ -91,9 +91,10 @@ names(d003b) <- c("Region", "Year", "Population")
 #  Plot 3 - final plot - get order of regions right
 #
 plot03b <- ggplot(d003b, aes(x=Region, y=Population, fill=Year)) +geom_bar(position="dodge", stat="identity") + coord_flip()
-plot03c <- plot03b + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitle("Figure 3: New Zealand Census: Maori speakers by Region")
-plot03c + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury", "West Coast", "Marlborough", "Nelson", "Tasman", "Wellington",
+plot03c <- plot03b + scale_fill_brewer(palette="Set2", labels =c("2013","2006","2001"))  + theme_bw(base_size = 16) + ggtitle("Figure 3: New Zealand Census: Maori speakers by Region")
+plot03d <- plot03c + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury", "West Coast", "Marlborough", "Nelson", "Tasman", "Wellington",
                                     "Manawatu-Wanganui", "Taranaki", "Hawke's Bay", "Gisborne", "Bay of Plenty", "Waikato", "Auckland", "Northland")) + theme(axis.title.y = element_blank())
+plot03d + guides(fill = guide_legend(reverse=TRUE))
 #
 # End of Section 3
 #
@@ -116,12 +117,20 @@ names(d004b) <- c("Region", "Year", "Percent")
 # plot04b <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity") + coord_flip()
 # plot04b + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitle("Census: % Maori language speakers by Region")
 #
-#  Plot 4 - final plot
+#  Plot 4 - closer, add region labels
 #
-plot04c <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity") + coord_flip()
-plot4d <- plot04c + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitle("Fig. 4: Census: % of Maori speakers by Region")
-plot4d + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury", "West Coast", "Marlborough", "Nelson", "Tasman", "Wellington",
-                                    "Manawatu-Wanganui", "Taranaki", "Hawke's Bay", "Gisborne", "Bay of Plenty", "Waikato", "Auckland", "Northland")) + theme(axis.title.y = element_blank())
+# plot04c <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity") + coord_flip()
+# plot04d <- plot04c + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16) + ggtitle("Fig. 4: Census: % of Maori speakers by Region")
+# plot04d + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury", "West Coast", "Marlborough", "Nelson", "Tasman", "Wellington",
+# "Manawatu-Wanganui", "Taranaki", "Hawke's Bay", "Gisborne", "Bay of Plenty", "Waikato", "Auckland", "Northland")) + theme(axis.title.y = element_blank())
+#
+#  Plot 4 - Final, get legend labels correct and in order
+#
+plot04e <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity") + coord_flip()
+plot04f <- plot04e + scale_fill_brewer(palette="Set2",labels =c("2013","2006","2001"))  + theme_bw(base_size = 16) + ggtitle("Figure 4: Census: % of Maori speakers by Region")
+plot04g <- plot04f + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury", "West Coast", "Marlborough", "Nelson", "Tasman", "Wellington",
+ "Manawatu-Wanganui", "Taranaki", "Hawke's Bay", "Gisborne", "Bay of Plenty", "Waikato", "Auckland", "Northland")) + theme(axis.title.y = element_blank())
+plot04g + guides(fill = guide_legend(reverse=TRUE))
 #
 #
 # End of Section 4
@@ -159,7 +168,7 @@ plot5c <- ggplot(d005, aes(x=PerSpkr13, y=PerPop13, fill=Region)) +geom_point(co
 plot5d <- plot5c + geom_text(aes(label=Region), hjust=1.1, vjust=.5, size=6) + xlim(5,30)+ ylim(7,46)
 plot5d + guides(fill=FALSE)
 #
-# end of section 5, clean up R plot with Pixelmator and then upload
+# end of section 5, clean up R plot with Pixelmator (move regions labels) and then upload
 #
 ### end of R script ###
 
