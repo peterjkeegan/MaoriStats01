@@ -1,5 +1,5 @@
 ### start  R script ###
-## - Maori Stats, from New Zealand Censuses,  Peter J Keegan 5 Jan 2014, updated 16 Dec 2014  ##
+## - Maori Stats, from New Zealand Censuses,  Peter J Keegan 5 Jan 2014, updated 17 Dec 2014  ##
 #
 ## Section 1 ##
 #
@@ -64,7 +64,7 @@ names(d002a) <- c("Year", "AgeGroup", "Population")
 #  change Plot 2 colours
 #
 plot02b <- ggplot(d002a, aes(x=Year, y=Population, fill=AgeGroup)) + geom_bar(position="dodge", stat="identity")
-plot02b + scale_fill_brewer(palette="Set2") + theme_bw(base_size = 16) + ggtitle("Figure 2: New Zealand Census: Maori speakers by Age Group")
+plot02b + scale_fill_brewer(palette="Set2") + theme_bw(base_size = 19) + ggtitle("Figure 2: New Zealand Census: Maori speakers by Age Group")
 #
 # End of Section 2
 #
@@ -91,7 +91,7 @@ names(d003b) <- c("Region", "Year", "Population")
 #  Plot 3 - final plot - get order of regions right
 #
 plot03b <- ggplot(d003b, aes(x=Region, y=Population, fill=Year)) +geom_bar(position="dodge", stat="identity") + coord_flip()
-plot03c <- plot03b + scale_fill_brewer(palette="Set2", labels =c("2013","2006","2001"))  + theme_bw(base_size = 16) + ggtitle("Figure 3: New Zealand Census: Maori speakers by Region")
+plot03c <- plot03b + scale_fill_brewer(palette="Set2", labels =c("2013","2006","2001"))  + theme_bw(base_size = 22) + ggtitle("Figure 3: New Zealand Census: Maori speakers by Region")
 plot03d <- plot03c + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury", "West Coast", "Marlborough", "Nelson", "Tasman", "Wellington",
                                     "Manawatu-Wanganui", "Taranaki", "Hawke's Bay", "Gisborne", "Bay of Plenty", "Waikato", "Auckland", "Northland")) + theme(axis.title.y = element_blank())
 plot03d + guides(fill = guide_legend(reverse=TRUE))
@@ -127,7 +127,7 @@ names(d004b) <- c("Region", "Year", "Percent")
 #  Plot 4 - Final, get legend labels correct and in order
 #
 plot04e <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity") + coord_flip()
-plot04f <- plot04e + scale_fill_brewer(palette="Set2",labels =c("2013","2006","2001"))  + theme_bw(base_size = 16) + ggtitle("Figure 4: Census: % of Maori speakers by Region")
+plot04f <- plot04e + scale_fill_brewer(palette="Set2",labels =c("2013","2006","2001"))  + theme_bw(base_size = 20) + ggtitle("Figure 4: Census, % of Maori speakers by Region")
 plot04g <- plot04f + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury", "West Coast", "Marlborough", "Nelson", "Tasman", "Wellington",
  "Manawatu-Wanganui", "Taranaki", "Hawke's Bay", "Gisborne", "Bay of Plenty", "Waikato", "Auckland", "Northland")) + theme(axis.title.y = element_blank())
 plot04g + guides(fill = guide_legend(reverse=TRUE))
@@ -164,11 +164,68 @@ rm(Region,PerSpkr13,PerPop13)
 #
 #  Plot 5, final R plot
 #
-plot5c <- ggplot(d005, aes(x=PerSpkr13, y=PerPop13, fill=Region)) +geom_point(colour="blue", size=4) + theme_bw(base_size = 16) + ggtitle("Figure 5: 2013 Census: % Speakers by % Region Pop.")
+plot5c <- ggplot(d005, aes(x=PerSpkr13, y=PerPop13, fill=Region)) +geom_point(colour="blue", size=4) + theme_bw(base_size = 19) + ggtitle("Figure 5: 2013 Census: % Speakers by % Region Pop.")
 plot5d <- plot5c + geom_text(aes(label=Region), hjust=1.1, vjust=.5, size=6) + xlim(5,30)+ ylim(7,46)
 plot5d + guides(fill=FALSE)
 #
 # end of section 5, clean up R plot with Pixelmator (move regions labels) and then upload
+#
+#
+# Create vectors of NZ Iwi-Region speakers of Maori for 2001, 2006, 2013
+IwiRegion <- c("01 Te Tai Tokerau/Tamaki Makau Rau (Northland/Auckland)","02 Hauraki (Coromandel)","03 Waikato/Te Rohe Potae (Waikato/King Country)","04 Te Arawa/Taupo (Rotorua/Taupo)","05 Tauranga Moana/Mataatua (Bay of Plenty)","06 Te Tairawhiti (East Coast)","07 Te Matau a Maui/Wairarapa (Hawke's Bay/Wairarapa)","08 Taranaki (Taranaki)","09 Whanganui/Rangitikei (Wanganui/Rangitikei)","10 Manawatu/Horowhenua/Te Whanganui a Tara (Wellington)","11 Te Waipounamu/Wharekauri (South Island/Chatham Islands)")
+C2001M <- c(36012,2508,21954,15708,26454,21429,15696,7149,3990,4569,6468)
+C2001E <- c(98220,6663,46077,35322,43473,45948,37812,19497,7356,12525,38856)
+C2001T <- c(134232,9171,68031,51030,69927,67377,53508,26646,11346,17094,45324)
+C2001Per <- c(36.6,37.6,47.6,44.4,60.8,46.6,41.5,36.6,54.2,36.4,16.6)
+C2006M <- c(39285,3363,22848,16599,28935,23226,17229,7869,4449,5295,7710)
+C2006E <- c(118527,9504,52665,39063,52947,55809,45966,24234,9450,15693,49881)
+C2006T <- c(157812,12867,75513,55662,81882,79035,63195,32103,13899,20988,57591)
+C2006Per <- c(33.1,35.3,43.3,42.4,54.6,41.6,  37.4,32.4,47,33.7,15.4)
+C2013M <- c(37140,3492,24666,16743,28890,21588,16680,7842,4569,6141,7944)
+C2013E <- c(124503,10539,60237,43062,57459,56412,48132,27963,11001,19287,55284)
+C2013T <- c(161643,14031,84903,59805,86349,78000,64812,35805,15570,25428,63228)
+C2013Per <- c(29.8,33.1,40.9,38.8,50.2,38.2,34.6,28,41.5,31.8,14.3)
+#
+# Combine to dataframe
+#
+d006 <- data.frame(IwiRegion,C2001M,C2001E,C2001T,C2001Per,C2006M,C2006E,C2006T,C2006Per,C2013M,C2013E,C2013T,C2013Per)
+rm(IwiRegion,C2001M,C2001E,C2001T,C2001Per,C2006M,C2006E,C2006T,C2006Per,C2013M,C2013E,C2013T,C2013Per)
+#
+d006a <- d006[c(1,13,9,5)]
+#
+d006b <- melt(d006a, id.vars="IwiRegion")
+names(d006b) <- c("IwiRegion", "Year", "Percent")
+#
+d006c <- d006[c(1,10,11)]
+d006d <- melt(d006c, id.vars="IwiRegion")
+names(d006d) <- c("IwiRegion", "Language", "Number")
+#
+# Plot 6
+# ggplot(d006d, aes(x=IwiRegion, y=Number, fill=Language)) + geom_bar(stat="identity")  + theme_bw(base_size = 18) + ggtitle("Maori/English Speakers by Iwi Region") + coord_flip()
+# 
+#
+plot6b <- ggplot(d006d, aes(x=IwiRegion, y=Number, fill=Language)) + geom_bar(stat="identity")  + theme_bw(base_size = 20) + ggtitle("Figure 6: Maori/English Speakers by Iwi Region 2013 Census") + coord_flip()
+plot6c <- plot6b + scale_fill_brewer(palette="Set2",labels =c("Maori","English"))
+plot6c + scale_x_discrete(limits=c("11 Te Waipounamu/Wharekauri (South Island/Chatham Islands)",
+"10 Manawatu/Horowhenua/Te Whanganui a Tara (Wellington)", "09 Whanganui/Rangitikei (Wanganui/Rangitikei)", "08 Taranaki (Taranaki)", 
+"07 Te Matau a Maui/Wairarapa (Hawke's Bay/Wairarapa)","06 Te Tairawhiti (East Coast)", "05 Tauranga Moana/Mataatua (Bay of Plenty)", 
+"04 Te Arawa/Taupo (Rotorua/Taupo)", "03 Waikato/Te Rohe Potae (Waikato/King Country)","02 Hauraki (Coromandel)",
+"01 Te Tai Tokerau/Tamaki Makau Rau (Northland/Auckland)")) + theme(axis.title.y = element_blank())
+#
+# 
+# Plot 7
+#
+# ggplot(d006b, aes(x=IwiRegion, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity") + theme_bw(base_size = 16) + ggtitle("Census: % of Maori language speakers by Iwi Region") + coord_flip()
+#
+plot07a <- ggplot(d006b, aes(x=IwiRegion, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity") + coord_flip()
+plot07b <- plot07a + scale_fill_brewer(palette="Set2",labels =c("2013","2006","2001"))  + theme_bw(base_size = 20) + ggtitle("Figure 7: Census: % of Maori speakers by Iwi Region")
+plot07c <- plot07b + scale_x_discrete(limits=c("11 Te Waipounamu/Wharekauri (South Island/Chatham Islands)",
+"10 Manawatu/Horowhenua/Te Whanganui a Tara (Wellington)", "09 Whanganui/Rangitikei (Wanganui/Rangitikei)", "08 Taranaki (Taranaki)", 
+"07 Te Matau a Maui/Wairarapa (Hawke's Bay/Wairarapa)","06 Te Tairawhiti (East Coast)", "05 Tauranga Moana/Mataatua (Bay of Plenty)", 
+"04 Te Arawa/Taupo (Rotorua/Taupo)", "03 Waikato/Te Rohe Potae (Waikato/King Country)","02 Hauraki (Coromandel)",
+"01 Te Tai Tokerau/Tamaki Makau Rau (Northland/Auckland)")) + theme(axis.title.y = element_blank())
+plot07c + guides(fill = guide_legend(reverse=TRUE))
+#
 #
 ### end of R script ###
 
