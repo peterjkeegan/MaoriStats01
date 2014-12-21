@@ -100,7 +100,7 @@ names(d003b) <- c("Region", "Year", "Population")
 # plot 3 final plot, get order of regions right
 #
 plot03c <- ggplot(d003b, aes(x=Region, y=Population, fill=Year)) + geom_bar(position="dodge", stat="identity")
-plot03d <- plot03c + coord_flip() + theme_bw(base_size = 22)
+plot03d <- plot03c + coord_flip() + theme_bw(base_size = 20)
 plot03e <- plot03d + scale_fill_brewer(palette="Set2", labels =c("2013","2006","2001"))
 plot03f <- plot03e + ggtitle("Figure 3: NZ Census: Maori speakers by Region")
 plot03g <- plot03f + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury",
