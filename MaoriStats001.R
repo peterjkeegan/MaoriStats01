@@ -1,5 +1,5 @@
 ## start  R script ##
-# Maori Language Stats, from New Zealand Censuses, Peter J Keegan updated 22 Dec 2014 #
+# Maori Language Stats from New Zealand Censuses, Peter J Keegan updated 22 Dec 2014 #
 #
 # Section 1
 #
