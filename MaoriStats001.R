@@ -1,5 +1,5 @@
 ## start  R script ##
-# Maori Language Stats from New Zealand Censuses, Peter J Keegan updated 22 Dec 2014 #
+# Maori Language Stats from New Zealand Censuses, Peter J Keegan updated 23 Dec 2014 #
 #
 # Section 1
 #
@@ -384,7 +384,6 @@ plot08r <- plot08q + scale_x_discrete(limits=c("Ngati Raukawa (Waikato)","Ngati 
 plot08r + guides(fill = guide_legend(reverse=TRUE)) + theme(axis.title.y = element_blank())
 #
 rm(plot08m, plot08n, plot08o, plot08p, plot08q)
-#
 #
 #
 ## end of R script ##
