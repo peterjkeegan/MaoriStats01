@@ -12,7 +12,7 @@ library(scales)
 Year <- c(1991,1996,2001,2006,2013,2021)
 Ethnicity <- c(434847,523371,526281,565329,598605,610000)
 Descent <- c(511278,579714,604110,643977,668724,683000)
-Speakers <- c(NA, NA, 130485, 131601,125352,116000) # no language question pre 2001 Census
+Speakers <- c(NA, NA, 130485, 131601,125352,116000) # no language qu pre 2001
 #
 # Combine to dataframe
 #
