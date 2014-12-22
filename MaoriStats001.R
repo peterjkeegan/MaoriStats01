@@ -1,5 +1,5 @@
 ## start  R script ##
-# Maori Language stats from New Zealand Censuses, Peter J Keegan updated 23 Dec 2014
+# Maori Language stats from NZ Censuses, Peter J Keegan updated 23 Dec 2014
 #
 # Section 1
 #
@@ -7,7 +7,7 @@ library(ggplot2)
 library(reshape2)
 library(scales)
 #
-# Create vectors of NZ Census (Maori) Data, with addition of my 2021 "guestimates"
+# Create vectors of NZ Census (Maori) Data, with addition of my 2021 guestimates
 #
 Year <- c(1991,1996,2001,2006,2013,2021)
 Ethnicity <- c(434847,523371,526281,565329,598605,610000)
