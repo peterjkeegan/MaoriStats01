@@ -23,7 +23,7 @@ rm(Descent,Ethnicity, Speakers, Year)  # Get rid of redundant vectors
 # Convert data from wide to long format
 #
 d001a <- melt(d001, id.vars="Year")
-names(d001a) <- c("Year", "Maori", "Population")
+names(d001a) <- c("Year", "Māori", "Population")
 #
 #  plot 1 1st attempt
 #
@@ -32,7 +32,7 @@ names(d001a) <- c("Year", "Maori", "Population")
 #  plot 1 Final
 #
 plot01a <- ggplot(d001a, aes(x=Year, y=Population, colour=Maori, group=Maori))
-plot01b <- plot01a + ggtitle("Figure 1: NZ Census, Maori Descent, Ethnicity, Speakers, 1991-2020")
+plot01b <- plot01a + ggtitle("Figure 1: NZ Census, Māori Descent, Ethnicity, Speakers, 1991-2020")
 plot01c <- plot01b + geom_line() + geom_point(size=4) + scale_y_continuous(labels = comma)
 plot01d <- plot01c + expand_limits(y=0) + theme_bw(base_size = 20)
 plot01d + theme (plot.title = element_text(size=20))
@@ -127,18 +127,18 @@ names(d004b) <- c("Region", "Year", "Percent")
 #
 # plot 4,  1st basic then improve
 #
-# plot4a <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity")
+# plot4a <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) + geom_bar(position="dodge", stat="identity")
 # plot4a + theme_bw(base_size = 16) + ggtitle("Census: % of Maori language speakers by Region") + coord_flip()
 #
 # plot 4 change plot colours
 #
-# plot04b <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity")
+# plot04b <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) + geom_bar(position="dodge", stat="identity")
 # plot04bb <-cplot04b + scale_fill_brewer(palette="Set2") + theme_bw(base_size = 16) + coord_flip()
 # plot04bb + ggtitle("Census: % Maori language speakers by Region")
 #
 # plot 4  add region labels
 #
-# plot04c <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity")
+# plot04c <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) + geom_bar(position="dodge", stat="identity")
 # plot04d <- plot04c + scale_fill_brewer(palette="Set2")  + theme_bw(base_size = 16)
 # plot04e <- plot04d + ggtitle("Fig. 4: Census: % of Maori speakers by Region")
 # plot04e + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury",
@@ -148,7 +148,7 @@ names(d004b) <- c("Region", "Year", "Percent")
 #
 # plot 4  Final, get legend labels correct and in order
 #
-plot04h <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +geom_bar(position="dodge", stat="identity")
+plot04h <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) + geom_bar(position="dodge", stat="identity")
 plot04i <- plot04h + scale_fill_brewer(palette="Set2",labels =c("2013","2006","2001")) + coord_flip()
 plot04j <- plot04i + theme_bw(base_size = 20)
 plot04k <- plot04j + ggtitle("Figure 4: NZ Census, Percentage of Maori speakers by Region, 2001-2013")
