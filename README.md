@@ -4,11 +4,10 @@ MaoriStats01
 This R script looks at Māori language statistics that derive from New Zealand 
 Census data currently available on the Web. The time series are irregular. 
 I am looking for trends initially, not absolute numbers, as there are errors 
-in the reporting (more on this later). This is my 1st effort, which I'll 
-improve and add to at a later stage.
+in the reporting (more on this later). I put some files here in Feb 2014
+and did some further work in Dec 2014
 
-The CSV file is something I constructed from Stats NZ Excel spreadsheets 
-(see the Stats NZ website).
+All the data comes from Stats NZ (see their website).
 
 I divided the R script into a number of sections, mainly so its easy for
 me to remember what I did.
@@ -47,11 +46,4 @@ population for each region as a scatter plot (Plot 5), in some ways this in
 kind of collapsing or combining plots 4 and 5. There is a positive correlation 
 between these variables.
 
-WARNINGs - In some cases regional analyses can be misleading, as there is a 
-lot of variation in regions such as Auckland and the Bay of Plenty. 
-This needs to be explored by looking at next lower level, i.e., 
-District Councils (yes I am planning to do this). 
-There are both errors and over reporting of results in these data.
-
-Where to from here ? I'll look at iwi (Māori tribes), and defacto social 
-class measures such as income and education.
+Section 6 and other sections need UPDATING HERE
