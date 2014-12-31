@@ -34,7 +34,7 @@ names(d001a) <- c("Year", "Māori", "Population")
 #  plot 1 Final
 #
 plot01a <- ggplot(d001a, aes(x=Year, y=Population, colour=Māori, group=Māori))
-plot01b <- plot01a + ggtitle("Figure 1: NZ Census, Māori Descent, Ethnicity, Speakers, 1991-2020")
+plot01b <- plot01a + ggtitle("Figure 1: NZ Census, Māori Descent, Ethnicity, Speakers, 1991-2021")
 plot01c <- plot01b + geom_line() + geom_point(size=4) + scale_y_continuous(labels = comma)
 plot01d <- plot01c + expand_limits(y=0) + theme_bw(base_size = 20)
 plot01d + theme (plot.title = element_text(size=20))
