@@ -341,7 +341,7 @@ plot06e <- plot06d + theme (plot.title = element_text(size=18))
 plot06f <- plot06e + scale_fill_brewer(palette="Set2",
                                        labels =c("Māori","English"))
 plot06f +
-  scale_x_discrete(limits=c("11 Te Waipounamu/Wharekauri(South Island/Chatham Islands)",
+scale_x_discrete(limits=c("11 Te Waipounamu/Wharekauri(South Island/Chatham Islands)",
 "10 Manawatu/Horowhenua/Te Whanganui a Tara (Wellington)",
 "09 Whanganui/Rangitikei (Wanganui/Rangitikei)", "08 Taranaki (Taranaki)",
 "07 Te Matau a Maui/Wairarapa (Hawke's Bay/Wairarapa)",
