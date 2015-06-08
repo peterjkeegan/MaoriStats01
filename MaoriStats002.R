@@ -8,9 +8,9 @@ library(scales)
 #
 #
 # Section 1 Overview
-# Create vectors of NZ Census (Maori) Data, with addition of my 2021 guestimates
+# Create vectors of NZ Census (Maori) Data, with addition of my 2018 guestimates
 #
-Year <- c(1991, 1996, 2001, 2006, 2013, 2021)
+Year <- c(1991, 1996, 2001, 2006, 2013, 2018)
 Ethnicity <- c(434847, 523371, 526281, 565329, 598605, 610000)
 Descent <- c(511278, 579714, 604110, 643977, 668724, 683000)
 Speakers <- c(NA, 129048, 130482, 131613, 125352, 116000) # no lang. qu pre 1996
@@ -35,7 +35,7 @@ names(d001a) <- c("Year", "Māori", "Population")
 #
 plot01a <- ggplot(d001a, aes(x=Year, y=Population, colour=Māori, group=Māori))
 plot01b <- plot01a +
-ggtitle("Figure 1: NZ Census, Māori Descent, Ethnicity, & Speakers, 1991-2021")
+ggtitle("Figure 1: NZ Census, Māori Descent, Ethnicity, & Speakers, 1991-2018")
 plot01c <- plot01b + geom_line() + geom_point(size = 4)
 plot01d <- plot01c + scale_y_continuous(labels = comma,
   breaks = c(0, 100000, 200000, 300000, 400000, 500000, 600000, 700000))
