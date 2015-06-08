@@ -5,7 +5,7 @@ This R script looks at Māori language statistics that derive from New Zealand
 Census data currently available on the Web. The time series are irregular. 
 I am looking for trends initially, not absolute numbers, as there are errors 
 in the reporting (more on this later). I put some files here in Feb 2014
-and did some further work in Dec 2014
+and did some further work in Dec 2014, Jan 2015 and finally May 2015.
 
 All the data comes from Stats NZ (see their website).
 
