@@ -1,5 +1,5 @@
 # start  R script #
-# Maori Language stats from NZ Censuses, Peter J Keegan updated 8 June 2015
+# Maori Language stats from NZ Censuses, Peter J Keegan updated 10 June 2015
 #
 #
 library(ggplot2)
@@ -34,15 +34,16 @@ names(d001a) <- c("Year", "Māori", "Population")
 #  plot 1 Final
 #
 plot01a <- ggplot(d001a, aes(x=Year, y=Population, colour=Māori, group=Māori))
-plot01b <- plot01a +
-ggtitle("Figure 1: NZ Census, Māori Descent, Ethnicity, & Speakers, 1991-2018")
+plot01b <- plot01a + ggtitle("Figure 1: New Zealand Census \n Māori Descent, Ethnicity, & Speakers, 1991-2018")
 plot01c <- plot01b + geom_line() + geom_point(size = 4)
 plot01d <- plot01c + scale_y_continuous(labels = comma,
   breaks = c(0, 100000, 200000, 300000, 400000, 500000, 600000, 700000))
-plot01e <- plot01d + expand_limits(y = 0) + theme_bw(base_size = 20)
-plot01e + theme (plot.title = element_text(size = 20))
+plot01e <- plot01d + expand_limits(y = 0, x = 2018) + theme_bw(base_size = 20)
+plot01f <- plot01e + scale_x_continuous(name = "Census Year",
+  breaks = c(1991, 1996, 2001, 2006, 2013, 2018), expand = c(0,0))
+plot01f + theme (plot.title = element_text(size = 20))
 #
-rm(plot01a, plot01b, plot01c, plot01d)
+rm(plot01a, plot01b, plot01c, plot01d, plot01e)
 #
 #
 # Section 2 Maori Speakers by 4 age groups
