@@ -320,7 +320,7 @@ C2013E <- c(124503, 10539, 60237, 43062, 57459, 56412, 48132, 27963,
 C2013T <- c(161643, 14031, 84903, 59805, 86349, 78000, 64812, 35805,
   15570, 25428, 63228)
 C2013Per <- c(29.8, 33.1, 40.9, 38.8, 50.2, 38.2, 34.6, 28,
-              41.5, 31.8, 14.3)
+  41.5, 31.8, 14.3)
 #
 # Combine to dataframe
 #
@@ -405,7 +405,7 @@ rm(plot06p, plot06q, plot06r, plot06s)
 # ggtitle("Census: Percentage of Maori language speakers by Iwi Region") +
 # coord_flip()
 #
-plot07a <- ggplot(d006b, aes(x=IwiRegion, y=Percent, fill=Year)) +
+plot07a <- ggplot(d006b, aes(x = IwiRegion, y = Percent, fill = Year)) +
   geom_bar(position = "dodge", stat = "identity")
 plot07b <- plot07a + coord_flip()  + theme_bw(base_size = 20)
 plot07c <- plot07b +
@@ -492,7 +492,7 @@ names(d008d) <- c("Iwi", "Language", "Number")
 # ggtitle("Maori/English Speakers by Major Iwi") + coord_flip()
 #
 #
-plot08b <- ggplot(d008d, aes(x=Iwi, y=Number, fill=Language)) +
+plot08b <- ggplot(d008d, aes(x = Iwi, y = Number, fill = Language)) +
   geom_bar(stat = "identity")
 plot08c <- plot08b +
   ggtitle("Figure 8: NZ Census Māori/English Speakers by Major Iwi 2013")
@@ -515,7 +515,7 @@ plot08g + scale_x_discrete(limits = c("Ngati Raukawa (Waikato)",
 rm(plot08b, plot08c, plot08d, plot08e, plot08f)
 #
 #
-plot08m <- ggplot(d008b, aes(x=Iwi, y=Percent, fill=Year)) +
+plot08m <- ggplot(d008b, aes(x = Iwi, y = Percent, fill = Year)) +
   geom_bar(position = "dodge", stat = "identity")
 plot08n <- plot08m + coord_flip()  + theme_bw(base_size = 20)
 plot08o <- plot08n + scale_fill_brewer(palette = "Set2",
