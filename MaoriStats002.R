@@ -1,5 +1,5 @@
-# start  R script #
-# Maori Language stats from NZ Censuses, Peter J Keegan updated 10 June 2015
+# start R script #
+# Maori Language stats from NZ Censuses, Peter J Keegan updated 12 June 2015
 # all data created in the script, self contained but not best way to do things.
 # Done using OSX, if using Windows etc. check Unicode OK.
 #
@@ -20,23 +20,23 @@ Speakers <- c(NA, 129048, 130482, 131613, 125352, 116000) # no lang. qu pre 1996
 #
 d001 <- data.frame(Year, Descent, Ethnicity, Speakers)
 #
-rm(Descent, Ethnicity, Speakers, Year)  # Get rid of redundant vectors
+rm(Descent, Ethnicity, Speakers, Year) # Get rid of redundant vectors
 #
 # Convert data from wide to long format and stack
 #
 d001a <- melt(d001, id.vars = "Year")
 names(d001a) <- c("Year", "Maori", "Population")
 #
-#  plot 1 1st attempt
+# plot 1 1st attempt
 #
 # ggplot(d001a, aes(x=Year, y=Population, colour=Maori, group=Maori)) +
 # geom_line() + geom_point(size=4)
 #
-#  plot 1 Final
+# plot 1 Final
 #
 plot01a <- ggplot(d001a, aes(x = Year, y = Population, colour = Maori,
   group = Maori)) + labs(colour = "M\u0101ori")
-plot01b <- plot01a + ggtitle("Figure 1: New Zealand Census \n M\u0101ori Descent, Ethnicity, & Speakers, 1991-2018")
+plot01b <- plot01a + ggtitle("Figure 1: New Zealand Census 1991-2013 \n M\u0101ori Descent, Ethnicity, & Speakers")
 plot01c <- plot01b + geom_line() + geom_point(size = 4)
 plot01d <- plot01c + scale_y_continuous(labels = comma,
   breaks = c(0, 100000, 200000, 300000, 400000, 500000, 600000, 680000),
@@ -55,39 +55,40 @@ rm(plot01a, plot01b, plot01c, plot01d, plot01e)
 # Create vectors of NZ Census Data, Maori speakers by age group by year
 # (2001, 2006, 2013)
 #
-Year <- c(2001, 2006, 2013)
-LessThan15 <- c(38673, 35151, 32961)
-Age15to29 <- c(31479, 31860, 29232)
-Age30to64 <- c(50967, 53574, 50910)
-Over64 <- c(9363, 11031, 12249)
+year <- c(2001, 2006, 2013)
+lessthan15 <- c(38673, 35151, 32961)
+age15to29 <- c(31479, 31860, 29232)
+age30to64 <- c(50967, 53574, 50910)
+over64 <- c(9363, 11031, 12249)
 #
 # Combine to dataframe
 #
-d002 <- data.frame(Year, LessThan15, Age15to29, Age30to64, Over64)
+d002 <- data.frame(year, lessthan15, age15to29, age30to64, over64)
 #
-rm(Year, LessThan15, Age15to29, Age30to64, Over64)  # delete redundant vectors
+rm(year, lessthan15, age15to29, age30to64, over64) # delete redundant vectors
 #
 # Convert data from wide to long format
 #
-d002a <- melt(d002, id.vars = "Year")
-names(d002a) <- c("Year", "AgeGroup", "Population")
+d002a <- melt(d002, id.vars = "year")
+names(d002a) <- c("year", "agegroup", "pop")
 #
 # plot 2, 1st attempt
 #
-# plot02a <- ggplot(d002a, aes(x=Year, y=Population, fill=AgeGroup)) +
+# plot02a <- ggplot(d002a, aes(x=year, y=pop, fill=agegroup)) +
 # geom_bar(position="dodge", stat="identity")
 # plot02a + theme_bw(base_size = 20) +
 # ggtitle("Census: Maori language speakers by 4 Age Groups")
 #
 # change plot 2 colours
 #
-plot02a <- ggplot(d002a, aes(x = Year, y = Population, fill = AgeGroup)) +
+plot02a <- ggplot(d002a, aes(x = year, y = pop, fill = agegroup)) +
   geom_bar(position = "dodge", stat = "identity")
-plot02b <- plot02a + scale_fill_brewer(palette = "Set2") +
+plot02b <- plot02a + scale_fill_brewer(palette = "Set2", name = "Age Group",
+  labels =c("Less Than 15", "15 to 29", "30 to 64", "Over 64")) +
   theme_bw(base_size = 20)
 plot02c <- plot02b +
-  ggtitle("Figure 2: New Zealand Census, Māori speakers \n by 4 Age Groups, 2001, 2006, 2013")
-plot02d <- plot02c + scale_y_continuous(labels = comma,
+  ggtitle("Figure 2: New Zealand Census 2001, 2006, 2013 \n M\u0101ori Speakers by 4 Age Groups")
+plot02d <- plot02c + scale_y_continuous(name = "Population", labels = comma,
   breaks = c(0, 10000, 20000, 30000, 40000, 50000, 60000), expand = c(0, 0))
 plot02e <- plot02d + scale_x_continuous(name = "Census Year",
   breaks = c(2001, 2006, 2013), expand = c(0, 0))
@@ -149,7 +150,7 @@ names(d003b) <- c("Region", "Year", "Population")
 # plot03ba <- ggplot(d003b, aes(x=Region, y=Population, fill=Year))
 # plot03bb <- plot03ba + geom_bar(position="dodge", stat="identity") +
 # coord_flip()
-# plot03bc <- plot03bb + scale_fill_brewer(palette="Set2")  +
+# plot03bc <- plot03bb + scale_fill_brewer(palette="Set2") +
 # theme_bw(base_size = 19)
 # plot03bc + ggtitle("Census: Maori language speakers by Region")
 #
@@ -162,8 +163,8 @@ plot03d <- plot03c + coord_flip() + theme_bw(base_size = 20) +
 plot03e <- plot03d + scale_fill_brewer(palette = "Set2",
   labels =c("2013", "2006", "2001"))
 plot03f <- plot03e +
-  ggtitle("Figure 3: New Zealand Census: Māori speakers \n by Region 2001, 2006, 2013")
-plot03g <- plot03f + scale_x_discrete(limits=c("Southland", "Otago",
+  ggtitle("Figure 3: New Zealand Census 2001, 2006, 2013\nM\u0101ori Speakers by Region")
+plot03g <- plot03f + scale_x_discrete(limits = c("Southland", "Otago",
   "Canterbury", "West Coast", "Marlborough", "Nelson", "Tasman", "Wellington",
   "Manawatu-Wanganui", "Taranaki", "Hawke's Bay", "Gisborne",
   "Bay of Plenty", "Waikato", "Auckland", "Northland"))
@@ -184,7 +185,7 @@ d004a <- d003[c(2, 11, 8, 5)]
 d004b <- melt(d004a, id.vars = "Region")
 names(d004b) <- c("Region", "Year", "Percent")
 #
-# plot 4,  1st basic then improve
+# plot 4, 1st basic then improve
 #
 # plot4a <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +
 # geom_bar(position="dodge", stat="identity")
@@ -199,11 +200,11 @@ names(d004b) <- c("Region", "Year", "Percent")
 # theme_bw(base_size = 16) + coord_flip()
 # plot04bb + ggtitle("Census: % Maori language speakers by Region")
 #
-# plot 4  add region labels
+# plot 4 add region labels
 #
 # plot04c <- ggplot(d004b, aes(x=Region, y=Percent, fill=Year)) +
 # geom_bar(position="dodge", stat="identity")
-# plot04d <- plot04c + scale_fill_brewer(palette="Set2")  +
+# plot04d <- plot04c + scale_fill_brewer(palette="Set2") +
 # theme_bw(base_size = 16)
 # plot04e <- plot04d + ggtitle("Fig. 4: Census: % of Maori speakers by Region")
 # plot04e + scale_x_discrete(limits=c("Southland", "Otago", "Canterbury",
@@ -212,7 +213,7 @@ names(d004b) <- c("Region", "Year", "Percent")
 # "Bay of Plenty", "Waikato", "Auckland", "Northland")) +
 # theme(axis.title.y = element_blank())
 #
-# plot 4  Final, get legend labels correct and in order
+# plot 4 Final, get legend labels correct and in order
 #
 plot04h <- ggplot(d004b, aes(x = Region, y = Percent, fill = Year)) +
   geom_bar(position = "dodge", stat = "identity")
@@ -220,9 +221,9 @@ plot04i <- plot04h + scale_fill_brewer(palette = "Set2",
   labels =c("2013", "2006", "2001")) + coord_flip()
 plot04j <- plot04i + theme_bw(base_size = 20)
 plot04k <- plot04j +
-  ggtitle("Figure 4: New Zealand Census, Percentage \n of Māori speakers by Region, 2001, 2006, 2013")
+  ggtitle("Figure 4: New Zealand Census 2001, 2006, 2013\n Percentage of M\u0101ori Speakers by Region")
 plot04l <- plot04k + scale_x_discrete(limits = c("Southland", "Otago",
-  "Canterbury", "West Coast", "Marlborough", "Nelson","Tasman", "Wellington",
+  "Canterbury", "West Coast", "Marlborough", "Nelson", "Tasman", "Wellington",
   "Manawatu-Wanganui", "Taranaki", "Hawke's Bay", "Gisborne", "Bay of Plenty",
   "Waikato", "Auckland", "Northland"))
 plot04m <- plot04l + theme(axis.title.y = element_blank())
@@ -262,7 +263,7 @@ rm(Region, PerSpkr13, PerPop13)
 # geom_point() + theme_bw(base_size = 16)
 # plot05 + ggtitle("2013 Census: % Speakers by % of Region Pop.")
 #
-#  plot 5 - add labels, hide key
+# plot 5 - add labels, hide key
 #
 # plot5a <- ggplot(d005, aes(x=PerSpkr13, y=PerPop13, fill=Region)) +
 # geom_point() + theme_bw(base_size = 16)
@@ -271,13 +272,13 @@ rm(Region, PerSpkr13, PerPop13)
 # plot5b + guides(fill=FALSE) +
 # ggtitle("2013 Census: Maori % Speakers by % of Region Pop.")
 #
-#  Plot 5, final R plot
+# Plot 5, final R plot
 #
 plot05c <- ggplot(d005, aes(x = PerSpkr13, y = PerPop13, fill = Region)) +
   geom_point(colour = "blue", size = 4)
 plot05d <- plot05c + theme_bw(base_size = 20) + guides(fill=FALSE)
 plot05e <- plot05d +
-  ggtitle("Figure 5: 2013 Census: % of Māori Speakers by Percentage Region Pop.")
+  ggtitle("Figure 5: 2013 Census: % of M\u0101ori Speakers by Percentage Region Pop.")
 plot05f <- plot05e + theme (plot.title = element_text(size = 18))
 plot05g <- plot05f + geom_text(aes(label = Region), hjust = 1.1,
   vjust = .5, size = 6) + xlim(5, 30) + ylim(7, 46)
@@ -299,7 +300,7 @@ IwiRegion <- c("01 Te Tai Tokerau/Tāmaki Makaurau\n (Northland/Auckland)",
   "06 Te Tairāwhiti\n (East Coast)",
   "07 Te Matau a Māui/Wairarapa\n (Hawke's Bay/Wairarapa)",
   "08 Taranaki\n (Taranaki)",
-  "09 Whanganui/Rangitīkei\n (Wanganui/Rangitīkei)",
+  "09 Whanganui/Rangitīkei\n (Wanganui/Rangitikei)",
   "10 Manawatū/Horowhenua/\n Te Whanganui a Tara (Wellington)",
   "11 Te Waipounamu/Wharekauri\n (South Island/Chatham Islands)")
 #
@@ -354,15 +355,15 @@ names(d006d) <- c("IwiRegion", "Language", "Number")
 plot06b <- ggplot(d006d, aes(x = IwiRegion, y = Number, fill = Language)) +
   geom_bar(stat = "identity")
 plot06c <- plot06b +
-  ggtitle("Figure 6A: New Zealand Census Māori/English Speakers \n by Iwi Region 2013")
-plot06d <- plot06c + theme_bw(base_size = 20)  + coord_flip()
+  ggtitle("Figure 6A: New Zealand Census 2013\nM\u0101ori/English Speakers by Iwi Region")
+plot06d <- plot06c + theme_bw(base_size = 20) + coord_flip()
 plot06e <- plot06d + theme (plot.title = element_text(size = 18))
 plot06f <- plot06e + scale_fill_brewer(palette = "Set2",
   labels = c("Māori", "English"))
 plot06f +
 scale_x_discrete(limits = c("11 Te Waipounamu/Wharekauri\n (South Island/Chatham Islands)",
   "10 Manawatū/Horowhenua/\n Te Whanganui a Tara (Wellington)",
-  "09 Whanganui/Rangitīkei\n (Wanganui/Rangitīkei)",
+  "09 Whanganui/Rangitīkei\n (Wanganui/Rangitikei)",
   "08 Taranaki\n (Taranaki)",
   "07 Te Matau a Māui/Wairarapa\n (Hawke's Bay/Wairarapa)",
   "06 Te Tairāwhiti\n (East Coast)",
@@ -380,14 +381,14 @@ rm(plot06b, plot06c, plot06d, plot06e)
 plot06p <- ggplot(d006d, aes(x = IwiRegion, y = Number, fill = Language)) +
   geom_bar(stat = "identity")
 plot06q <- plot06p +
-  ggtitle("Figure 6B: New Zealand Census Māori/English Speakers\n by Iwi Region 2013")
-plot06r <- plot06q + theme_bw(base_size = 20)  + coord_flip() +
+  ggtitle("Figure 6B: New Zealand Census 2013 \n M\u0101ori/English Speakers by Iwi Region")
+plot06r <- plot06q + theme_bw(base_size = 20) + coord_flip() +
   theme(axis.title.y = element_blank())
 plot06s <- plot06r + theme (plot.title = element_text(size = 18))
 plot06t <- plot06s +
   scale_fill_brewer(palette = "Set2", labels =c("Māori", "English"))
 plot06t + scale_x_discrete(limits =c("02 Hauraki\n (Coromandel)",
-  "09 Whanganui/Rangitīkei\n (Wanganui/Rangitīkei)",
+  "09 Whanganui/Rangitīkei\n (Wanganui/Rangitikei)",
   "10 Manawatū/Horowhenua/\n Te Whanganui a Tara (Wellington)",
   "08 Taranaki\n (Taranaki)",
   "11 Te Waipounamu/Wharekauri\n (South Island/Chatham Islands)",
@@ -411,16 +412,16 @@ rm(plot06p, plot06q, plot06r, plot06s)
 #
 plot07a <- ggplot(d006b, aes(x = IwiRegion, y = Percent, fill = Year)) +
   geom_bar(position = "dodge", stat = "identity")
-plot07b <- plot07a + coord_flip()  + theme_bw(base_size = 20)
+plot07b <- plot07a + coord_flip() + theme_bw(base_size = 20)
 plot07c <- plot07b +
   scale_fill_brewer(palette = "Set2", labels = c("2013", "2006", "2001"))
 plot07d <- plot07c +
-  ggtitle("Figure 7: New Zealand Census, Percentage of \n Māori speakers by Iwi Region 2001, 2006, 2013")
+  ggtitle("Figure 7: New Zealand Census 2001, 2006, 2013\n Percentage of M\u0101ori Speakers by Iwi Region")
 plot07e <- plot07d + theme (plot.title = element_text(size = 20))
 plot07f <- plot07e +
   scale_x_discrete(limits = c("11 Te Waipounamu/Wharekauri\n (South Island/Chatham Islands)",
   "10 Manawatū/Horowhenua/\n Te Whanganui a Tara (Wellington)",
-  "09 Whanganui/Rangitīkei\n (Wanganui/Rangitīkei)",
+  "09 Whanganui/Rangitīkei\n (Wanganui/Rangitikei)",
   "08 Taranaki\n (Taranaki)",
   "07 Te Matau a Māui/Wairarapa\n (Hawke's Bay/Wairarapa)",
   "06 Te Tairāwhiti\n (East Coast)",
@@ -499,19 +500,19 @@ names(d008d) <- c("Iwi", "Language", "Number")
 plot08b <- ggplot(d008d, aes(x = Iwi, y = Number, fill = Language)) +
   geom_bar(stat = "identity")
 plot08c <- plot08b +
-  ggtitle("Figure 8: New Zealand Census \n Māori/English Speakers by Major Iwi 2013")
-plot08d <- plot08c + theme_bw(base_size = 20)  + coord_flip()
+  ggtitle("Figure 8: New Zealand Census 2013\n M\u0101ori/English Speakers by Major Iwi")
+plot08d <- plot08c + theme_bw(base_size = 20) + coord_flip()
 plot08e <- plot08d + theme (plot.title = element_text(size=20))
 plot08f <- plot08e+ theme(axis.title.y = element_blank())
 plot08g <- plot08f + scale_fill_brewer(palette = "Set2",
   labels = c("Māori", "English"))
 plot08g + scale_x_discrete(limits = c("Ngati Raukawa (Waikato)",
   "Ngati Kahungunu ki Heretaunga",
-  "Te Ati Hau Nui-a-Paparangi","Tainui","Whakatohea",
+  "Te Ati Hau Nui-a-Paparangi", "Tainui", "Whakatohea",
   "Ngaiterangi","Te Whanau-a-Apanui", "Ngati Whatua",
   "Ngati Raukawa (ki te Tonga)",
   "Te Atiawa (Taranaki)","Ngati Awa", "Te Rarawa",
-  "Ngati Kahungunu, region unspecified","Te Arawa",
+  "Ngati Kahungunu, region unspecified", "Te Arawa",
   "Ngati Kahungunu ki Te Wairoa", "Tuhoe",
   "Ngati Maniapoto", "Ngati Tuwharetoa", "Waikato",
   "Ngai Tahu / Kai Tahu", "Ngati Porou", "Ngapuhi"))
@@ -521,11 +522,11 @@ rm(plot08b, plot08c, plot08d, plot08e, plot08f)
 #
 plot08m <- ggplot(d008b, aes(x = Iwi, y = Percent, fill = Year)) +
   geom_bar(position = "dodge", stat = "identity")
-plot08n <- plot08m + coord_flip()  + theme_bw(base_size = 20)
+plot08n <- plot08m + coord_flip() + theme_bw(base_size = 20)
 plot08o <- plot08n + scale_fill_brewer(palette = "Set2",
   labels = c("2013", "2006", "2001"))
 plot08p <- plot08o +
-  ggtitle("Figure 9: New Zealand Census, Percentage of \n Māori speakers by Major Iwi 2001, 2006, 2013")
+  ggtitle("Figure 9: New Zealand Census 2001, 2006, 2013\n Percentage of M\u0101ori Speakers by Major Iwi")
 plot08q <- plot08p + theme (plot.title = element_text(size=20))
 plot08r <- plot08q + scale_x_discrete(limits = c("Ngati Raukawa (Waikato)",
   "Ngati Kahungunu ki Heretaunga", "Te Ati Hau Nui-a-Paparangi",
