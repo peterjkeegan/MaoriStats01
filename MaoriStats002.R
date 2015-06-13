@@ -1,5 +1,5 @@
 # start R script #
-# Maori Language stats from NZ Censuses, Peter J Keegan updated 12 June 2015
+# Maori Language stats from NZ Censuses, Peter J Keegan, updated 13 June 2015
 # all data created in the script, self contained but not best way to do things.
 # Done using OSX, if using Windows etc. check Unicode OK.
 #
@@ -36,7 +36,8 @@ names(d001a) <- c("Year", "Maori", "Population")
 #
 plot01a <- ggplot(d001a, aes(x = Year, y = Population, colour = Maori,
   group = Maori)) + labs(colour = "M\u0101ori")
-plot01b <- plot01a + ggtitle("Figure 1: New Zealand Census 1991-2013 \n M\u0101ori Descent, Ethnicity, & Speakers")
+plot01b <- plot01a + ggtitle(paste("Figure 1: New Zealand Census 1991-2013",
+"\n M\u0101ori Descent, Ethnicity, & Speakers", sep = ""))
 plot01c <- plot01b + geom_line() + geom_point(size = 4)
 plot01d <- plot01c + scale_y_continuous(labels = comma,
   breaks = c(0, 100000, 200000, 300000, 400000, 500000, 600000, 680000),
@@ -84,10 +85,10 @@ names(d002a) <- c("year", "agegroup", "pop")
 plot02a <- ggplot(d002a, aes(x = year, y = pop, fill = agegroup)) +
   geom_bar(position = "dodge", stat = "identity")
 plot02b <- plot02a + scale_fill_brewer(palette = "Set2", name = "Age Group",
-  labels =c("Less Than 15", "15 to 29", "30 to 64", "Over 64")) +
+  labels = c("Less Than 15", "15 to 29", "30 to 64", "Over 64")) +
   theme_bw(base_size = 20)
-plot02c <- plot02b +
-  ggtitle("Figure 2: New Zealand Census 2001, 2006, 2013 \n M\u0101ori Speakers by 4 Age Groups")
+plot02c <- plot02b + ggtitle(paste("Figure 2: New Zealand Census 2001, 2006, ",
+"2013 \n M\u0101ori Speakers by 4 Age Groups", sep = ""))
 plot02d <- plot02c + scale_y_continuous(name = "Population", labels = comma,
   breaks = c(0, 10000, 20000, 30000, 40000, 50000, 60000), expand = c(0, 0))
 plot02e <- plot02d + scale_x_continuous(name = "Census Year",
@@ -162,8 +163,8 @@ plot03d <- plot03c + coord_flip() + theme_bw(base_size = 20) +
   theme (plot.title = element_text(size=20))
 plot03e <- plot03d + scale_fill_brewer(palette = "Set2",
   labels =c("2013", "2006", "2001"))
-plot03f <- plot03e +
-  ggtitle("Figure 3: New Zealand Census 2001, 2006, 2013\nM\u0101ori Speakers by Region")
+plot03f <- plot03e + ggtitle(paste("Figure 3: New Zealand Census 2001, 2006, ",
+"2013\nM\u0101ori Speakers by Region", sep = ""))
 plot03g <- plot03f + scale_x_discrete(limits = c("Southland", "Otago",
   "Canterbury", "West Coast", "Marlborough", "Nelson", "Tasman", "Wellington",
   "Manawatu-Wanganui", "Taranaki", "Hawke's Bay", "Gisborne",
@@ -220,8 +221,8 @@ plot04h <- ggplot(d004b, aes(x = Region, y = Percent, fill = Year)) +
 plot04i <- plot04h + scale_fill_brewer(palette = "Set2",
   labels =c("2013", "2006", "2001")) + coord_flip()
 plot04j <- plot04i + theme_bw(base_size = 20)
-plot04k <- plot04j +
-  ggtitle("Figure 4: New Zealand Census 2001, 2006, 2013\n Percentage of M\u0101ori Speakers by Region")
+plot04k <- plot04j + ggtitle(paste("Figure 4: New Zealand Census 2001, 2006, ",
+"2013\n Percentage of M\u0101ori Speakers by Region", sep = ""))
 plot04l <- plot04k + scale_x_discrete(limits = c("Southland", "Otago",
   "Canterbury", "West Coast", "Marlborough", "Nelson", "Tasman", "Wellington",
   "Manawatu-Wanganui", "Taranaki", "Hawke's Bay", "Gisborne", "Bay of Plenty",
@@ -277,8 +278,8 @@ rm(Region, PerSpkr13, PerPop13)
 plot05c <- ggplot(d005, aes(x = PerSpkr13, y = PerPop13, fill = Region)) +
   geom_point(colour = "blue", size = 4)
 plot05d <- plot05c + theme_bw(base_size = 20) + guides(fill=FALSE)
-plot05e <- plot05d +
-  ggtitle("Figure 5: 2013 Census: % of M\u0101ori Speakers by Percentage Region Pop.")
+plot05e <- plot05d + ggtitle(paste("Figure 5: 2013 Census: % of M\u0101ori ",
+"Speakers by Percentage Region Pop.", sep = ""))
 plot05f <- plot05e + theme (plot.title = element_text(size = 18))
 plot05g <- plot05f + geom_text(aes(label = Region), hjust = 1.1,
   vjust = .5, size = 6) + xlim(5, 30) + ylim(7, 46)
@@ -354,8 +355,8 @@ names(d006d) <- c("IwiRegion", "Language", "Number")
 #
 plot06b <- ggplot(d006d, aes(x = IwiRegion, y = Number, fill = Language)) +
   geom_bar(stat = "identity")
-plot06c <- plot06b +
-  ggtitle("Figure 6A: New Zealand Census 2013\nM\u0101ori/English Speakers by Iwi Region")
+plot06c <- plot06b + ggtitle(paste("Figure 6A: New Zealand Census 2013\n",
+"M\u0101ori/English Speakers by Iwi Region", sep = ""))
 plot06d <- plot06c + theme_bw(base_size = 20) + coord_flip()
 plot06e <- plot06d + theme (plot.title = element_text(size = 18))
 plot06f <- plot06e + scale_fill_brewer(palette = "Set2",
@@ -380,8 +381,8 @@ rm(plot06b, plot06c, plot06d, plot06e)
 #
 plot06p <- ggplot(d006d, aes(x = IwiRegion, y = Number, fill = Language)) +
   geom_bar(stat = "identity")
-plot06q <- plot06p +
-  ggtitle("Figure 6B: New Zealand Census 2013 \n M\u0101ori/English Speakers by Iwi Region")
+plot06q <- plot06p + ggtitle(paste("Figure 6B: New Zealand Census 2013 \n",
+"M\u0101ori/English Speakers by Iwi Region", sep = ""))
 plot06r <- plot06q + theme_bw(base_size = 20) + coord_flip() +
   theme(axis.title.y = element_blank())
 plot06s <- plot06r + theme (plot.title = element_text(size = 18))
@@ -415,8 +416,8 @@ plot07a <- ggplot(d006b, aes(x = IwiRegion, y = Percent, fill = Year)) +
 plot07b <- plot07a + coord_flip() + theme_bw(base_size = 20)
 plot07c <- plot07b +
   scale_fill_brewer(palette = "Set2", labels = c("2013", "2006", "2001"))
-plot07d <- plot07c +
-  ggtitle("Figure 7: New Zealand Census 2001, 2006, 2013\n Percentage of M\u0101ori Speakers by Iwi Region")
+plot07d <- plot07c + ggtitle(paste("Figure 7: New Zealand Census 2001, 2006, ",
+"2013\n Percentage of M\u0101ori Speakers by Iwi Region", sep = ""))
 plot07e <- plot07d + theme (plot.title = element_text(size = 20))
 plot07f <- plot07e +
   scale_x_discrete(limits = c("11 Te Waipounamu/Wharekauri\n (South Island/Chatham Islands)",
@@ -466,7 +467,8 @@ T2006 <-c(122538, 72237, 49083, 33615, 34728, 33666, 32844, 20967, 23436,
 Per2006 <-c(24.3, 29.3, 12.2, 33.9, 30.0, 27.8, 40.6, 26.4, 31.8, 26.3,
   33.2, 33.6, 18.7, 26.0, 28.4, 40.8, 34.5, 33.1, 28.8, 35.1, 32.4, 27.7)
 M2013 <-c(28053, 19425, 6270, 12879, 10011, 9429, 13413, 5460, 5670,
-  4422, 5064, 5262, 2679, 3678, 3732, 5058, 4347, 3819, 2544, 3738, 3300, 2763)
+  4422, 5064, 5262, 2679, 3678, 3732, 5058, 4347, 3819, 2544, 3738, 3300,
+  2763)
 E2013 <-c(97302, 51447, 48132, 27252, 25776, 25902, 21522, 15492, 14046,
   14049, 11349, 10884, 12477, 11343, 10995, 7797, 8496, 8334, 9264, 7947,
   7656, 7254)
@@ -499,8 +501,8 @@ names(d008d) <- c("Iwi", "Language", "Number")
 #
 plot08b <- ggplot(d008d, aes(x = Iwi, y = Number, fill = Language)) +
   geom_bar(stat = "identity")
-plot08c <- plot08b +
-  ggtitle("Figure 8: New Zealand Census 2013\n M\u0101ori/English Speakers by Major Iwi")
+plot08c <- plot08b + ggtitle(paste("Figure 8: New Zealand Census 2013\n",
+"M\u0101ori/English Speakers by Major Iwi", sep = ""))
 plot08d <- plot08c + theme_bw(base_size = 20) + coord_flip()
 plot08e <- plot08d + theme (plot.title = element_text(size=20))
 plot08f <- plot08e+ theme(axis.title.y = element_blank())
@@ -525,8 +527,8 @@ plot08m <- ggplot(d008b, aes(x = Iwi, y = Percent, fill = Year)) +
 plot08n <- plot08m + coord_flip() + theme_bw(base_size = 20)
 plot08o <- plot08n + scale_fill_brewer(palette = "Set2",
   labels = c("2013", "2006", "2001"))
-plot08p <- plot08o +
-  ggtitle("Figure 9: New Zealand Census 2001, 2006, 2013\n Percentage of M\u0101ori Speakers by Major Iwi")
+plot08p <- plot08o + ggtitle(paste("Figure 9: New Zealand Census 2001, 2006, ",
+"2013\n Percentage of M\u0101ori Speakers by Major Iwi", sep = ""))
 plot08q <- plot08p + theme (plot.title = element_text(size=20))
 plot08r <- plot08q + scale_x_discrete(limits = c("Ngati Raukawa (Waikato)",
   "Ngati Kahungunu ki Heretaunga", "Te Ati Hau Nui-a-Paparangi",
