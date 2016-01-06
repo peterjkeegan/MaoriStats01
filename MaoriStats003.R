@@ -157,8 +157,8 @@ value.name = "Population")
 #
 # plot 3 1st basic, then improve
 #
-# ggplot(d003b, aes(x=cregion, y=Population, fill=Year)) +
-# geom_bar(position="dodge", stat="identity")
+# ggplot(d003b, aes(x = cregion, y = Population, fill = Year)) +
+# geom_bar(position = "dodge", stat = "identity")
 #
 #
 # plot 3 final plot
