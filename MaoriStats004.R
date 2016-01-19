@@ -1,12 +1,12 @@
 # start R script #
-# Maori Language stats from NZ Censuses, Peter J Keegan, updated 22 June 2015
+# Maori Language stats from NZ Censuses, Peter J Keegan, updated 19 Jan 2016
 # all data created in the script, self contained but not best way to do things.
 # Done using OSX, if using Windows etc. check Unicode OK.
 # object names mostly lower case, or sometimes lowerCamelCase
 # d.. usually indicates dataframe, plot.. indicates plot object
 #
 #
-library(ggplot2)
+library(ggplot2);library(ggrepel)
 library(reshape2)
 library(scales)
 #
@@ -151,9 +151,9 @@ rm(rorder, spr2001, pop2001, per2001, spr2006, pop2006,
 d003a <- d003[c(2, 9, 6, 3)]
 #
 d003b <- melt(d003a, id.vars = "cregion",
-measure.vars = c("spr2001", "spr2006", "spr2013"),
-variable.name = "Year",
-value.name = "Population")
+    measure.vars = c("spr2001", "spr2006", "spr2013"),
+    variable.name = "Year",
+    value.name = "Population")
 #
 # plot 3 1st basic, then improve
 #
@@ -240,7 +240,7 @@ plot04o + theme (plot.title = element_text(size = 20))
 #
 rm(plot04h, plot04i, plot04j, plot04k, plot04l, plot04m, plot04n)
 #
-# Section 5 #
+# Section 5
 #
 # NZ Census Data % of Maori speakers by Regions vs. % of total Regional pop.2013
 #
@@ -277,22 +277,38 @@ rm(perSpkr13, perPop13)
 # plot5b + guides(fill=FALSE) +
 # ggtitle("2013 Census: Maori % Speakers by % of Region Pop.")
 #
-# Plot 5, final R plot
+# Plot 5, ex final R plot 2015
 #
-plot05c <- ggplot(d005, aes(x = perSpkr13, y = perPop13, fill = cregion)) +
-  geom_point(colour = "blue", size = 4)
-plot05d <- plot05c + theme_bw(base_size = 20) + guides(fill=FALSE)
-plot05e <- plot05d + ggtitle(paste0("Figure 5: 2013 Census: % of M\u0101ori ",
-"Speakers by Percentage Region Population"))
-plot05f <- plot05e + theme (plot.title = element_text(size = 18))
-plot05g <- plot05f + geom_text(aes(label = cregion), hjust = 1.1,
-  vjust = .5, size = 6) + xlim(5, 30) + ylim(7, 46)
-plot05g + xlab("Percentage of M\u0101ori Speakers in Region") +
+# plot05c <- ggplot(d005, aes(x = perSpkr13, y = perPop13, fill = cregion)) +
+#   geom_point(colour = "blue", size = 4)
+# plot05d <- plot05c + theme_bw(base_size = 20) + guides(fill=FALSE)
+# plot05e <- plot05d + ggtitle(paste0("Figure 5: 2013 Census: % of M\u0101ori ",
+# "Speakers by Percentage Region Population"))
+# plot05f <- plot05e + theme (plot.title = element_text(size = 18))
+# plot05g <- plot05f + geom_text(aes(label = cregion), hjust = 1.1,
+#   vjust = .5, size = 6) + xlim(5, 30) + ylim(7, 46)
+# plot05g + xlab("Percentage of M\u0101ori Speakers in Region") +
+#   ylab("Percentage of M\u0101ori in Region")
+#
+# rm(plot05c, plot05d, plot05e, plot05f)
+#
+# Plot 5, Final R plot 2016
+# use Geoms from ggrepel to fix overlapping labels
+#
+plot05cc <- ggplot(d005, aes(x = perSpkr13, y = perPop13, fill = cregion)) +
+  geom_point(colour = "blue", size = 3)
+plot05cd <- plot05cc + theme_bw(base_size = 20) + guides(fill=FALSE)
+plot05ce <- plot05cd + ggtitle(paste0("Figure 5: 2013 Census: Percentage ",
+    "of M\u0101ori Speakers by Percentage Region Population"))
+plot05cf <- plot05ce + theme (plot.title = element_text(size = 18))
+plot05cg <- plot05cf + geom_text_repel(aes(perSpkr13, perPop13, label = cregion),
+    size = 6.5, force = 1) + xlim(5, 30) + ylim(7, 46)
+plot05cg + xlab("Percentage of M\u0101ori Speakers in Region") +
   ylab("Percentage of M\u0101ori in Region")
 #
-rm(plot05c, plot05d, plot05e, plot05f)
+rm(plot05cc, plot05cd, plot05ce, plot05cf)
 #
-# clean up plot 5 with Pixelmator (separate overlapping region labels) upload
+#
 #
 # Section 6
 #
