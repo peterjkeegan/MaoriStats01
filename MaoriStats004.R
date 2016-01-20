@@ -49,9 +49,9 @@ plot01d <- plot01c + scale_y_continuous(labels = comma,
   expand = c(0, 0))
 plot01e <- plot01d + expand_limits(y = 0, x = 2018) + theme_bw(base_size = 20)
 plot01f <- plot01e + scale_x_continuous(name = "Census Year",
-  breaks = c(1991, 1996, 2001, 2006, 2013, 2018), expand = c(0, 0))
+  breaks = c(1991, 1996, 2001, 2006, 2013, 2018), expand = c(.02, 0))
 plot01g <- plot01f + theme (plot.title = element_text(size = 20))
-plot01g + theme(legend.justification=c(1,0), legend.position=c(1,.4))
+plot01g + theme(legend.justification=c(1,.1), legend.position=c(1,.4))
 #
 #
 rm(plot01a, plot01b, plot01c, plot01d, plot01e, plot01f)
@@ -527,9 +527,11 @@ plot08f <- plot08e+ theme(axis.title.y = element_blank())
 plot08g <- plot08f + scale_fill_brewer(palette = "Set2",
   labels = c("M\u0101ori (& English)", "English Only"))
 plot08h <- plot08g + scale_x_discrete(limits = iwi10krev)
-plot08h + theme(legend.justification=c(1,0), legend.position=c(1,.4))
+plot08i <- plot08h + scale_y_continuous(breaks = c(0, 20000, 40000, 60000,
+  80000, 100000, 120000), expand = c(0, 0))
+plot08i + theme(legend.justification=c(1,0), legend.position=c(1,.4))
 #
-rm(plot08b, plot08c, plot08d, plot08e, plot08f, plot08g)
+rm(plot08b, plot08c, plot08d, plot08e, plot08f, plot08g, plot08h)
 #
 #
 plot08m <- ggplot(d008b, aes(x = iwi10k, y = Percent, fill = Year)) +
