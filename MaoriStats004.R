@@ -1,5 +1,5 @@
 # start R script #
-# Maori Language stats from NZ Censuses, Peter J Keegan, updated 19 Jan 2016
+# Maori Language stats from NZ Censuses, Peter J Keegan, updated 20 Jan 2016
 # all data created in the script, self contained but not best way to do things.
 # Done using OSX, if using Windows etc. check Unicode OK.
 # object names mostly lower case, or sometimes lowerCamelCase
@@ -50,10 +50,11 @@ plot01d <- plot01c + scale_y_continuous(labels = comma,
 plot01e <- plot01d + expand_limits(y = 0, x = 2018) + theme_bw(base_size = 20)
 plot01f <- plot01e + scale_x_continuous(name = "Census Year",
   breaks = c(1991, 1996, 2001, 2006, 2013, 2018), expand = c(0, 0))
-plot01f + theme (plot.title = element_text(size = 20))
+plot01g <- plot01f + theme (plot.title = element_text(size = 20))
+plot01g + theme(legend.justification=c(1,0), legend.position=c(1,.4))
 #
 #
-rm(plot01a, plot01b, plot01c, plot01d, plot01e)
+rm(plot01a, plot01b, plot01c, plot01d, plot01e, plot01f)
 #
 #
 # Section 2 Maori Speakers by 4 age groups
@@ -102,9 +103,10 @@ plot02d <- plot02c + scale_y_continuous(name = "Population", labels = comma,
   breaks = c(0, 10000, 20000, 30000, 40000, 50000, 60000), expand = c(0, 0))
 plot02e <- plot02d + scale_x_continuous(name = "Census Year",
   breaks = c(2001, 2006, 2013), expand = c(0, 0))
-plot02e + theme (plot.title = element_text(size = 20))
+plot02f <- plot02e + theme (plot.title = element_text(size = 20))
+plot02f + theme(legend.justification=c(1,0), legend.position=c(.8,.7))
 #
-rm(plot02a, plot02b, plot02c, plot02d)
+rm(plot02a, plot02b, plot02c, plot02d, plot02e)
 #
 #
 # Section 3
@@ -174,10 +176,11 @@ plot03f <- plot03e + ggtitle(paste0("Figure 3: New Zealand Census 2001, 2006, ",
 plot03g <- plot03f + scale_x_discrete(limits = cregionrev)
 plot03f <- plot03g + scale_y_continuous(labels = comma,
   breaks = c(0, 5000, 10000, 15000, 20000, 25000, 30000), expand = c(0, 0))
-plot03f + guides(fill = guide_legend(reverse=TRUE)) +
+plot03g <- plot03f + guides(fill = guide_legend(reverse=TRUE)) +
   theme(axis.title.y = element_blank())
+plot03g + theme(legend.justification=c(1,0), legend.position=c(1,.4))
 #
-rm(plot03c, plot03d, plot03e, plot03f, plot03g)
+rm(plot03c, plot03d, plot03e, plot03f)
 #
 #
 # Section 4 #
@@ -236,9 +239,10 @@ plot04m <- plot04l + theme(axis.title.y = element_blank())
 plot04n <- plot04m + scale_y_continuous(breaks = c(0, 5, 10, 15, 20, 25, 30,
   35), expand = c(0, 0))
 plot04o <- plot04n + guides(fill = guide_legend(reverse = TRUE))
-plot04o + theme (plot.title = element_text(size = 20))
+plot04p <- plot04o + theme (plot.title = element_text(size = 20))
+plot04p + theme(legend.justification=c(1,0), legend.position=c(1,.4))
 #
-rm(plot04h, plot04i, plot04j, plot04k, plot04l, plot04m, plot04n)
+rm(plot04h, plot04i, plot04j, plot04k, plot04l, plot04m, plot04n, plot04o)
 #
 # Section 5
 #
@@ -386,10 +390,13 @@ plot06d <- plot06c + theme_bw(base_size = 20) + coord_flip()
 plot06e <- plot06d + theme (plot.title = element_text(size = 18))
 plot06f <- plot06e + scale_fill_brewer(palette = "Set2",
   labels = c("M\u0101ori (& English)", "English Only"))
-plot06f + scale_x_discrete(limits = iwiregionrev) +
+plot06g <- plot06f + scale_x_discrete(limits = iwiregionrev) +
   theme(axis.title.y = element_blank())
+plot06h <- plot06g + scale_y_continuous(breaks = c(0, 25000, 50000, 75000,
+  100000, 125000, 150000), expand = c(0, 0))
+plot06h + theme(legend.justification=c(1,0), legend.position=c(1,.4))
 #
-rm(plot06b, plot06c, plot06d, plot06e)
+rm(plot06b, plot06c, plot06d, plot06e, plot06f, plot06g)
 #
 # plot 6 reordered
 #
@@ -403,7 +410,7 @@ plot06s <- plot06r + theme (plot.title = element_text(size = 18))
 plot06t <- plot06s +
   scale_fill_brewer(palette = "Set2",
   labels =c("M\u0101ori (& English)", "English Only"))
-plot06t + scale_x_discrete(limits =c("02 Hauraki\n (Coromandel)",
+plot06u <- plot06t + scale_x_discrete(limits =c("02 Hauraki\n (Coromandel)",
   "09 Whanganui/Rangitīkei\n (Wanganui/Rangitikei)",
   "10 Manawatū/Horowhenua/\n Te Whanganui a Tara (Wellington)",
   "08 Taranaki\n (Taranaki)",
@@ -414,8 +421,11 @@ plot06t + scale_x_discrete(limits =c("02 Hauraki\n (Coromandel)",
   "03 Waikato/Te Rohe Pōtae\n (Waikato/King Country)",
   "05 Tauranga Moana/Mātaatua\n (Bay of Plenty)",
   "01 Te Tai Tokerau/Tāmaki Makaurau\n (Northland/Auckland)"))
+plot06v <- plot06u + scale_y_continuous(breaks = c(0, 25000, 50000, 75000,
+  100000, 125000, 150000), expand = c(0, 0))
+plot06v + theme(legend.justification=c(1,0), legend.position=c(1,.4))
 #
-rm(plot06p, plot06q, plot06r, plot06s)
+rm(plot06p, plot06q, plot06r, plot06s, plot06t, plot06u)
 #
 # Section 7
 # plot 7
@@ -435,10 +445,13 @@ plot07d <- plot07c + ggtitle(paste0("Figure 7: New Zealand Census 2001, 2006, ",
 "2013\n Percentage of M\u0101ori Speakers by Iwi Region"))
 plot07e <- plot07d + theme (plot.title = element_text(size = 20))
 plot07f <- plot07e + scale_x_discrete(limits = iwiregionrev)
-plot07f + guides(fill = guide_legend(reverse = TRUE)) +
+plot07g <- plot07f + scale_y_continuous(breaks = c(0, 10, 20, 30,
+  40, 50, 60), expand = c(0, 0))
+plot07h <- plot07g + guides(fill = guide_legend(reverse = TRUE)) +
   theme(axis.title.y = element_blank())
+plot07h + theme(legend.justification=c(1,0), legend.position=c(1, .75))
 #
-rm(plot07a, plot07b, plot07c, plot07d, plot07e)
+rm(plot07a, plot07b, plot07c, plot07d, plot07e, plot07f, plot07g)
 #
 # Section 8, iwi 10k+, 2013
 #
@@ -513,9 +526,10 @@ plot08e <- plot08d + theme (plot.title = element_text(size=20))
 plot08f <- plot08e+ theme(axis.title.y = element_blank())
 plot08g <- plot08f + scale_fill_brewer(palette = "Set2",
   labels = c("M\u0101ori (& English)", "English Only"))
-plot08g + scale_x_discrete(limits = iwi10krev)
+plot08h <- plot08g + scale_x_discrete(limits = iwi10krev)
+plot08h + theme(legend.justification=c(1,0), legend.position=c(1,.4))
 #
-rm(plot08b, plot08c, plot08d, plot08e, plot08f)
+rm(plot08b, plot08c, plot08d, plot08e, plot08f, plot08g)
 #
 #
 plot08m <- ggplot(d008b, aes(x = iwi10k, y = Percent, fill = Year)) +
@@ -527,10 +541,13 @@ plot08p <- plot08o + ggtitle(paste0("Figure 9: New Zealand Census 2001, 2006, ",
 "2013\n Percentage of M\u0101ori Speakers by Major Iwi"))
 plot08q <- plot08p + theme (plot.title = element_text(size=20))
 plot08r <- plot08q + scale_x_discrete(limits = iwi10krev)
-plot08r + guides(fill = guide_legend(reverse = TRUE)) +
+plot08s <- plot08r + scale_y_continuous(breaks = c(0, 10, 20, 30,
+                                        40), expand = c(0, 0))
+plot08t <- plot08s + guides(fill = guide_legend(reverse = TRUE)) +
   theme(axis.title.y = element_blank())
+plot08t + theme(legend.justification=c(1,0), legend.position=c(1,.4))
 #
-rm(plot08m, plot08n, plot08o, plot08p, plot08q)
+rm(plot08m, plot08n, plot08o, plot08p, plot08q, plot08r, plot08s)
 #
 #
 ## end of R script ##
