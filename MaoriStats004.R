@@ -1,7 +1,7 @@
-# start R script #
+# start R script
 # Maori Language stats from NZ Censuses, Peter J Keegan, updated 20 Jan 2016
 # all data created in the script, self contained but not best way to do things.
-# Done using OSX, if using Windows etc. check Unicode OK.
+# Done using R via RStudio in OSX, if using Windows etc. check Unicode OK.
 # object names mostly lower case, or sometimes lowerCamelCase
 # d.. usually indicates dataframe, plot.. indicates plot object
 #
@@ -72,14 +72,14 @@ ageover64 <- c(9363, 11031, 12249)
 #
 d002 <- data.frame(year, agelessthan15, age15to29, age30to64, ageover64)
 #
-rm(year, agelessthan15, age15to29, age30to64, ageover64) # delete redundant vectors
+rm(year, agelessthan15, age15to29, age30to64, ageover64) # delete redund vectors
 #
 # Convert data from wide to long format & stack
 #
 d002a <- melt(d002, id.vars = "year",
-               measure.vars = c("agelessthan15", "age15to29", "age30to64", "ageover64"),
-              variable.name = "agegroup",
-                 value.name = "pop")
+  measure.vars = c("agelessthan15", "age15to29", "age30to64", "ageover64"),
+  variable.name = "agegroup",
+  value.name = "pop")
 #
 #
 #
@@ -552,4 +552,4 @@ plot08t + theme(legend.justification=c(1,0), legend.position=c(1,.4))
 rm(plot08m, plot08n, plot08o, plot08p, plot08q, plot08r, plot08s)
 #
 #
-## end of R script ##
+# end of R script
