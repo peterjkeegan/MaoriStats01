@@ -1,5 +1,5 @@
 # start R script
-# Maori Language stats from NZ Censuses, Peter J Keegan, updated 20 Jan 2016
+# Maori Language stats from NZ Censuses, Peter J Keegan last updated 23 Jan 2016
 # all data created in the script, self contained but not best way to do things.
 # Done using R via RStudio in OSX, if using Windows etc. check Unicode OK.
 # object names mostly lower case, or sometimes lowerCamelCase
@@ -34,8 +34,8 @@ d001a <- melt(d001, id.vars = "year",
 #
 # plot 1 1st attempt
 #
-# ggplot(d001a, aes(x=year, y=population, colour=maori, group=maori)) +
-# geom_line() + geom_point(size=4)
+# ggplot(d001a, aes(x = year, y = population, colour = maori, group = maori)) +
+# geom_line() + geom_point(size = 4)
 #
 # plot 1 Final
 #
@@ -85,8 +85,8 @@ d002a <- melt(d002, id.vars = "year",
 #
 # plot 2, 1st attempt
 #
-# plot02a <- ggplot(d002a, aes(x=year, y=pop, fill=agegroup)) +
-# geom_bar(position="dodge", stat="identity")
+# plot02a <- ggplot(d002a, aes(x = year, y = pop, fill = agegroup)) +
+# geom_bar(position = "dodge", stat = "identity")
 # plot02a + theme_bw(base_size = 20) +
 # ggtitle("Census: Maori language speakers by 4 Age Groups")
 #
