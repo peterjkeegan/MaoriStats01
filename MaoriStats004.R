@@ -9,7 +9,7 @@
 library(ggplot2);library(ggrepel)
 library(reshape2)
 library(scales)
-#
+library(readxl) #
 #
 # Section 1 Overview
 # Create vectors of NZ Census (Maori) Data, with addition of my 2018 guestimates
@@ -544,12 +544,50 @@ plot08p <- plot08o + ggtitle(paste0("Figure 9: New Zealand Census 2001, 2006, ",
 plot08q <- plot08p + theme (plot.title = element_text(size=20))
 plot08r <- plot08q + scale_x_discrete(limits = iwi10krev)
 plot08s <- plot08r + scale_y_continuous(breaks = c(0, 10, 20, 30,
-                                        40), expand = c(0, 0))
+  40), expand = c(0, 0))
 plot08t <- plot08s + guides(fill = guide_legend(reverse = TRUE)) +
   theme(axis.title.y = element_blank())
 plot08t + theme(legend.justification=c(1,0), legend.position=c(1,.4))
 #
 rm(plot08m, plot08n, plot08o, plot08p, plot08q, plot08r, plot08s)
+#
+#
+# Te Kupenga Data
+#
+# Figure 10
+#
+d010a <- read_excel("kupe-iwid1a.xls", sheet = 1) # columns set for stacks
+str(d010a)
+d010b <- d010a
+#
+d010c <- melt(d010b, id.vars = "iwi")
+names(d010c) <- c("iwi", "Proficiency", "Percent")
+str(d010c)
+#
+levels(d010c$Proficiency)
+#
+# either order factor Proficency for plotting or change column positions
+#
+# d010d <- d010c
+# d010d$Proficiency <- factor(d010d$Proficiency, levels =c("epervewe",
+#  "dperwell", "cperfw", "bpernot", "apernom"))
+#
+d010c$iwi <- factor(d010c$iwi, levels =c("Ngaitahu", "Tuwharetoa",
+ "Maniapoto", "Ngapuhi","Ngati Porou", "Te Arawa", "Waikato",
+ "Kahungunu (Wairoa)", "Tuhoe", "All"))
+levels(d010c$iwi)
+#
+# theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+#
+ggplot(d010c, aes(x=iwi, y = Percent, fill = Proficiency)) + coord_flip() +
+  geom_bar(stat = "identity") + theme_bw(base_size = 18) +
+  scale_y_discrete(breaks = c(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100),
+  expand = c(0, 0)) + scale_fill_brewer(palette = "Blues", direction = -1,
+  labels =c("very well", "well", "fairly well", "not very well", "few words"),
+  name = "Te Reo M\u0101ori\n Proficiency") +
+  ggtitle(paste0("Figure 10: Te Kupenga 2013, M\u0101ori Speaker",
+  " Oral Proficiency by Major Iwi"))
+#
 #
 #
 # end of R script
