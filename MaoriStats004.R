@@ -579,6 +579,9 @@ levels(d010c$iwi)
 #
 # theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
 #
+#
+# plot below no longer works, probably ggplot change ! NEED TO FIX
+#
 ggplot(d010c, aes(x=iwi, y = Percent, fill = Proficiency)) + coord_flip() +
   geom_bar(stat = "identity") + theme_bw(base_size = 18) +
   scale_y_discrete(breaks = c(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100),
