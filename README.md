@@ -60,7 +60,7 @@ Tuhoe (of easter/central North Island) and the South island Ngai Tahu.
 Figure 9 presents the percentage of Māori speakers by major iwi, from 2001 to 2013.
 Generally there has been a consistent decrease.
 
-The next Census is due to be held in early 2018.
+The last Census is due was held in March 2018. Data should be available in 2019.
 
 
 
