@@ -5,6 +5,7 @@
 # object names mostly lower case, or sometimes lowerCamelCase
 # d.. usually indicates dataframe, plot.. indicates plot object
 #
+# March 2022 check ggplot2 code, using depre features !
 #
 library(ggplot2);library(ggrepel)
 library(reshape2)
